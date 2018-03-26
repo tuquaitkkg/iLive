@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		3D1E299C2069416200DF7433 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E299B2069416200DF7433 /* MBProgressHUD.m */; };
 		3D286E7620693CC800298FA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D286E7520693CC800298FA7 /* AppDelegate.swift */; };
-		3D286E7820693CC800298FA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D286E7720693CC800298FA7 /* ViewController.swift */; };
+		3D286E7820693CC800298FA7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D286E7720693CC800298FA7 /* RootViewController.swift */; };
 		3D286E7B20693CC800298FA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D286E7920693CC800298FA7 /* Main.storyboard */; };
 		3D286E7D20693CC800298FA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D286E7C20693CC800298FA7 /* Assets.xcassets */; };
 		3D286E8020693CC800298FA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D286E7E20693CC800298FA7 /* LaunchScreen.storyboard */; };
+		3D7971C62069536600876825 /* LiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7971C52069536600876825 /* LiveNavigationController.swift */; };
+		3D7971C8206954B600876825 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7971C7206954B600876825 /* MenuViewController.swift */; };
 		B086CF3AB110B57F12D487A5 /* Pods_iLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C333460C55EE4986C4A6037 /* Pods_iLive.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,11 +24,13 @@
 		3D1E299D206941CE00DF7433 /* iLive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iLive-Bridging-Header.h"; sourceTree = "<group>"; };
 		3D286E7220693CC800298FA7 /* iLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D286E7520693CC800298FA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D286E7720693CC800298FA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3D286E7720693CC800298FA7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		3D286E7A20693CC800298FA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D286E7C20693CC800298FA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D286E7F20693CC800298FA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D286E8120693CC800298FA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D7971C52069536600876825 /* LiveNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveNavigationController.swift; sourceTree = "<group>"; };
+		3D7971C7206954B600876825 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		5C333460C55EE4986C4A6037 /* Pods_iLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7358F63D9A26EE636EEC9617 /* Pods-iLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.debug.xcconfig"; sourceTree = "<group>"; };
 		E9775801BCF4E5CEB593066E /* Pods-iLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +88,9 @@
 			children = (
 				3D1E29982069415300DF7433 /* ThirdParty */,
 				3D286E7520693CC800298FA7 /* AppDelegate.swift */,
-				3D286E7720693CC800298FA7 /* ViewController.swift */,
+				3D7971C7206954B600876825 /* MenuViewController.swift */,
+				3D7971C52069536600876825 /* LiveNavigationController.swift */,
+				3D286E7720693CC800298FA7 /* RootViewController.swift */,
 				3D286E7920693CC800298FA7 /* Main.storyboard */,
 				3D286E7C20693CC800298FA7 /* Assets.xcassets */,
 				3D286E7E20693CC800298FA7 /* LaunchScreen.storyboard */,
@@ -250,7 +256,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D286E7820693CC800298FA7 /* ViewController.swift in Sources */,
+				3D286E7820693CC800298FA7 /* RootViewController.swift in Sources */,
+				3D7971C8206954B600876825 /* MenuViewController.swift in Sources */,
+				3D7971C62069536600876825 /* LiveNavigationController.swift in Sources */,
 				3D1E299C2069416200DF7433 /* MBProgressHUD.m in Sources */,
 				3D286E7620693CC800298FA7 /* AppDelegate.swift in Sources */,
 			);
