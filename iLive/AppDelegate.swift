@@ -16,8 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().barTintColor = Constants.Settings.barColor
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        UITabBar.appearance().tintColor = UIColor.white
+        UITabBar.appearance().barTintColor = Constants.Settings.barColor
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loadingVC = storyboard.instantiateViewController(withIdentifier: "LoadingViewController")
+        window?.rootViewController = loadingVC
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func setupRootView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabbarController = storyboard.instantiateViewController(withIdentifier: "RootViewController")
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tabbarController
+        window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -16,9 +16,9 @@ class MenuViewController: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-      //  for livePhoto in DataStore.sharedInstance.categoryList {
-      //      categoriesArray.append(livePhoto.category!)
-      //  }
+        for livePhoto in DataStore.sharedInstance.categoryList {
+            categoriesArray.append(livePhoto.category!)
+        }
         
         tableView.separatorColor = UIColor(red: 150.0/255.0, green: 161.0/255.0, blue: 177.0/255.0, alpha: 1.0)
         tableView.delegate = self
@@ -38,9 +38,10 @@ class MenuViewController: UITableViewController {
         
         view.addSubview(imageView)
         tableView.tableHeaderView = view
+        tableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
         //    cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.textLabel!.textColor = UIColor.white
@@ -54,29 +55,29 @@ class MenuViewController: UITableViewController {
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-        let navigationController = storyboard?.instantiateViewController(withIdentifier: "contentViewController") as! LiveNavigationController
-//        let liveVC = storyboard?.instantiateViewControllerWithIdentifier("LiveWallpaperViewController") as! LiveWallpaperViewController
-//        liveVC.titleCategory = categoriesArray[indexPath.row]
-//        navigationController.viewControllers = [liveVC]
-//        frostedViewController.contentViewController = navigationController
-//        frostedViewController.hideMenuViewController()
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54.0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoriesArray.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let CellIdentifier = "CellMenu"
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath as IndexPath)
         cell.textLabel?.text = categoriesArray[indexPath.row]
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        let navigationController = storyboard?.instantiateViewController(withIdentifier: "contentViewController") as! LiveNavigationController
+        let liveVC = storyboard?.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
+        liveVC.titleCategory = categoriesArray[indexPath.row]
+        navigationController.viewControllers = [liveVC]
+        frostedViewController.contentViewController = navigationController
+        frostedViewController.hideMenuViewController()
     }
 }

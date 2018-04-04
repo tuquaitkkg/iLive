@@ -8,13 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		3D1E299C2069416200DF7433 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E299B2069416200DF7433 /* MBProgressHUD.m */; };
+		3D2198BC207478F100F6C632 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2198BB207478F100F6C632 /* ListViewController.swift */; };
+		3D2198BE20748BFE00F6C632 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2198BD20748BFE00F6C632 /* LoadingViewController.swift */; };
+		3D2198C02074944800F6C632 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2198BF2074944800F6C632 /* BaseViewController.swift */; };
+		3D2198C62074D6E500F6C632 /* FeaturedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2198C22074D6E400F6C632 /* FeaturedCell.swift */; };
+		3D2198C72074D6E500F6C632 /* FeaturedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2198C32074D6E400F6C632 /* FeaturedCell.xib */; };
+		3D2198C82074D6E500F6C632 /* WallpaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2198C42074D6E400F6C632 /* WallpaperCell.swift */; };
+		3D2198C92074D6E500F6C632 /* WallpaperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2198C52074D6E400F6C632 /* WallpaperCell.xib */; };
 		3D286E7620693CC800298FA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D286E7520693CC800298FA7 /* AppDelegate.swift */; };
 		3D286E7820693CC800298FA7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D286E7720693CC800298FA7 /* RootViewController.swift */; };
 		3D286E7B20693CC800298FA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D286E7920693CC800298FA7 /* Main.storyboard */; };
 		3D286E7D20693CC800298FA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D286E7C20693CC800298FA7 /* Assets.xcassets */; };
 		3D286E8020693CC800298FA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D286E7E20693CC800298FA7 /* LaunchScreen.storyboard */; };
+		3D676351207121160041D8CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D676350207121160041D8CD /* Constants.swift */; };
+		3D676353207126030041D8CD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D676352207126030041D8CD /* Utils.swift */; };
 		3D7971C62069536600876825 /* LiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7971C52069536600876825 /* LiveNavigationController.swift */; };
 		3D7971C8206954B600876825 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7971C7206954B600876825 /* MenuViewController.swift */; };
+		3D9B07102071E09B007F119C /* BlackWallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B070A2071E09B007F119C /* BlackWallpaper.swift */; };
+		3D9B07112071E09B007F119C /* Featured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B070B2071E09B007F119C /* Featured.swift */; };
+		3D9B07122071E09B007F119C /* FirstFeatured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B070C2071E09B007F119C /* FirstFeatured.swift */; };
+		3D9B07132071E09B007F119C /* LivePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B070D2071E09B007F119C /* LivePhoto.swift */; };
+		3D9B07142071E09B007F119C /* LiveWallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B070E2071E09B007F119C /* LiveWallpaper.swift */; };
+		3D9B07152071E09B007F119C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B070F2071E09B007F119C /* Post.swift */; };
+		3D9B07172071E194007F119C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B07162071E194007F119C /* DataStore.swift */; };
+		3D9B07192071E1A7007F119C /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B07182071E1A7007F119C /* PhotoService.swift */; };
 		B086CF3AB110B57F12D487A5 /* Pods_iLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C333460C55EE4986C4A6037 /* Pods_iLive.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +39,13 @@
 		3D1E299A2069416200DF7433 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3D1E299B2069416200DF7433 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		3D1E299D206941CE00DF7433 /* iLive-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iLive-Bridging-Header.h"; sourceTree = "<group>"; };
+		3D2198BB207478F100F6C632 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		3D2198BD20748BFE00F6C632 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		3D2198BF2074944800F6C632 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		3D2198C22074D6E400F6C632 /* FeaturedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCell.swift; sourceTree = "<group>"; };
+		3D2198C32074D6E400F6C632 /* FeaturedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCell.xib; sourceTree = "<group>"; };
+		3D2198C42074D6E400F6C632 /* WallpaperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperCell.swift; sourceTree = "<group>"; };
+		3D2198C52074D6E400F6C632 /* WallpaperCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallpaperCell.xib; sourceTree = "<group>"; };
 		3D286E7220693CC800298FA7 /* iLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D286E7520693CC800298FA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D286E7720693CC800298FA7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -29,8 +53,18 @@
 		3D286E7C20693CC800298FA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D286E7F20693CC800298FA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D286E8120693CC800298FA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D676350207121160041D8CD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3D676352207126030041D8CD /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3D7971C52069536600876825 /* LiveNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveNavigationController.swift; sourceTree = "<group>"; };
 		3D7971C7206954B600876825 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		3D9B070A2071E09B007F119C /* BlackWallpaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackWallpaper.swift; sourceTree = "<group>"; };
+		3D9B070B2071E09B007F119C /* Featured.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Featured.swift; sourceTree = "<group>"; };
+		3D9B070C2071E09B007F119C /* FirstFeatured.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstFeatured.swift; sourceTree = "<group>"; };
+		3D9B070D2071E09B007F119C /* LivePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhoto.swift; sourceTree = "<group>"; };
+		3D9B070E2071E09B007F119C /* LiveWallpaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveWallpaper.swift; sourceTree = "<group>"; };
+		3D9B070F2071E09B007F119C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		3D9B07162071E194007F119C /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		3D9B07182071E1A7007F119C /* PhotoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		5C333460C55EE4986C4A6037 /* Pods_iLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7358F63D9A26EE636EEC9617 /* Pods-iLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.debug.xcconfig"; sourceTree = "<group>"; };
 		E9775801BCF4E5CEB593066E /* Pods-iLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +99,17 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		3D2198C12074D6E400F6C632 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D2198C22074D6E400F6C632 /* FeaturedCell.swift */,
+				3D2198C32074D6E400F6C632 /* FeaturedCell.xib */,
+				3D2198C42074D6E400F6C632 /* WallpaperCell.swift */,
+				3D2198C52074D6E400F6C632 /* WallpaperCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3D286E6920693CC800298FA7 = {
 			isa = PBXGroup;
 			children = (
@@ -86,11 +131,20 @@
 		3D286E7420693CC800298FA7 /* iLive */ = {
 			isa = PBXGroup;
 			children = (
+				3D2198C12074D6E400F6C632 /* Views */,
+				3D9B07092071E09B007F119C /* Models */,
 				3D1E29982069415300DF7433 /* ThirdParty */,
 				3D286E7520693CC800298FA7 /* AppDelegate.swift */,
 				3D7971C7206954B600876825 /* MenuViewController.swift */,
 				3D7971C52069536600876825 /* LiveNavigationController.swift */,
 				3D286E7720693CC800298FA7 /* RootViewController.swift */,
+				3D676350207121160041D8CD /* Constants.swift */,
+				3D676352207126030041D8CD /* Utils.swift */,
+				3D9B07162071E194007F119C /* DataStore.swift */,
+				3D9B07182071E1A7007F119C /* PhotoService.swift */,
+				3D2198BB207478F100F6C632 /* ListViewController.swift */,
+				3D2198BF2074944800F6C632 /* BaseViewController.swift */,
+				3D2198BD20748BFE00F6C632 /* LoadingViewController.swift */,
 				3D286E7920693CC800298FA7 /* Main.storyboard */,
 				3D286E7C20693CC800298FA7 /* Assets.xcassets */,
 				3D286E7E20693CC800298FA7 /* LaunchScreen.storyboard */,
@@ -98,6 +152,19 @@
 				3D1E299D206941CE00DF7433 /* iLive-Bridging-Header.h */,
 			);
 			path = iLive;
+			sourceTree = "<group>";
+		};
+		3D9B07092071E09B007F119C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3D9B070A2071E09B007F119C /* BlackWallpaper.swift */,
+				3D9B070B2071E09B007F119C /* Featured.swift */,
+				3D9B070C2071E09B007F119C /* FirstFeatured.swift */,
+				3D9B070D2071E09B007F119C /* LivePhoto.swift */,
+				3D9B070E2071E09B007F119C /* LiveWallpaper.swift */,
+				3D9B070F2071E09B007F119C /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		79D1C6049F73855846620C80 /* Pods */ = {
@@ -180,7 +247,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D286E8020693CC800298FA7 /* LaunchScreen.storyboard in Resources */,
+				3D2198C72074D6E500F6C632 /* FeaturedCell.xib in Resources */,
 				3D286E7D20693CC800298FA7 /* Assets.xcassets in Resources */,
+				3D2198C92074D6E500F6C632 /* WallpaperCell.xib in Resources */,
 				3D286E7B20693CC800298FA7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,11 +325,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9B07122071E09B007F119C /* FirstFeatured.swift in Sources */,
+				3D9B07112071E09B007F119C /* Featured.swift in Sources */,
+				3D2198BE20748BFE00F6C632 /* LoadingViewController.swift in Sources */,
 				3D286E7820693CC800298FA7 /* RootViewController.swift in Sources */,
 				3D7971C8206954B600876825 /* MenuViewController.swift in Sources */,
+				3D2198C62074D6E500F6C632 /* FeaturedCell.swift in Sources */,
+				3D2198C02074944800F6C632 /* BaseViewController.swift in Sources */,
+				3D9B07152071E09B007F119C /* Post.swift in Sources */,
+				3D9B07192071E1A7007F119C /* PhotoService.swift in Sources */,
+				3D9B07132071E09B007F119C /* LivePhoto.swift in Sources */,
+				3D2198C82074D6E500F6C632 /* WallpaperCell.swift in Sources */,
 				3D7971C62069536600876825 /* LiveNavigationController.swift in Sources */,
+				3D9B07172071E194007F119C /* DataStore.swift in Sources */,
+				3D9B07142071E09B007F119C /* LiveWallpaper.swift in Sources */,
+				3D676353207126030041D8CD /* Utils.swift in Sources */,
+				3D9B07102071E09B007F119C /* BlackWallpaper.swift in Sources */,
 				3D1E299C2069416200DF7433 /* MBProgressHUD.m in Sources */,
 				3D286E7620693CC800298FA7 /* AppDelegate.swift in Sources */,
+				3D2198BC207478F100F6C632 /* ListViewController.swift in Sources */,
+				3D676351207121160041D8CD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
