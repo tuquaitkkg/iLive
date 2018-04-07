@@ -61,7 +61,30 @@
                     <view key="view" contentMode="scaleToFill" id="bol-48-zzY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen_image" translatesAutoresizingMaskIntoConstraints="NO" id="L5W-dg-9Pa">
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogI-Oq-7Jc">
+                                <rect key="frame" x="-0.5" y="601" width="375" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Fqz-Xw-ukz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L5W-dg-9Pa" firstAttribute="centerY" secondItem="VPb-Ff-G3W" secondAttribute="centerY" id="2H9-vh-R47"/>
+                            <constraint firstItem="ogI-Oq-7Jc" firstAttribute="centerX" secondItem="L5W-dg-9Pa" secondAttribute="centerX" id="Aaj-GR-TVc"/>
+                            <constraint firstItem="L5W-dg-9Pa" firstAttribute="centerX" secondItem="VPb-Ff-G3W" secondAttribute="centerX" id="K2d-bW-0RP"/>
+                            <constraint firstItem="ogI-Oq-7Jc" firstAttribute="width" secondItem="L5W-dg-9Pa" secondAttribute="width" id="NmA-aN-F0M"/>
+                            <constraint firstItem="L5W-dg-9Pa" firstAttribute="width" secondItem="bol-48-zzY" secondAttribute="width" id="aNe-ki-yV0"/>
+                            <constraint firstItem="L5W-dg-9Pa" firstAttribute="height" secondItem="bol-48-zzY" secondAttribute="height" id="eib-Pw-0hZ"/>
+                            <constraint firstItem="VPb-Ff-G3W" firstAttribute="bottom" secondItem="ogI-Oq-7Jc" secondAttribute="bottom" constant="45" id="jno-xk-Kfu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VPb-Ff-G3W"/>
                     </view>
                 </viewController>
@@ -191,6 +214,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LaunchScreen_image" width="540" height="960"/>
         <image name="ic_list" width="25" height="25"/>
     </resources>
 </document>
