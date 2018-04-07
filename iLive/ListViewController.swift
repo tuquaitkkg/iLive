@@ -76,15 +76,15 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         clListWallpaper.deselectItem(at: indexPath, animated: false)
         counter = counter + 1
-        if counter < 6
+        if counter < 10000000
 //            || WallpaperProduct.store.isProductPurchased(WallpaperProduct.AllWallpapers)
         {
-//            let pageViewController = storyboard!.instantiateViewControllerWithIdentifier("PageViewController") as! PageViewController
-//            pageViewController.indexSelected = indexPath.item
-//            pageViewController.videosArray = arrayWallpaper
-//            pageViewController.screenType = .LiveWallpaperScreen
-//            pageViewController.purchased = purchased
-//            presentViewController(pageViewController, animated: true, completion: nil)
+            let pageViewController = storyboard!.instantiateViewController(withIdentifier: "PageViewController") as! PageViewController
+            pageViewController.indexSelected = indexPath.item
+            pageViewController.videosArray = arrayWallpaper
+            pageViewController.screenType = .LiveWallpaperScreen
+            pageViewController.purchased = purchased
+            present(pageViewController, animated: true, completion: nil)
         } else {
             let alertController = UIAlertController(title: "Purchase", message: "You reached maximum times to view live wallpapers. Please go to Home tab to unlock all.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in

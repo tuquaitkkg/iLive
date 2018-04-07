@@ -143,12 +143,51 @@
             <point key="canvasLocation" x="1568.8" y="-612.14392803598207"/>
         </scene>
         <!--Page View Controller-->
-        <scene sceneID="bwN-ku-oxU">
+        <scene sceneID="7jM-Aj-SFF">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="8DS-CH-ZDJ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xOB-xN-Yzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="SJG-yk-wXK" customClass="PageViewController" customModule="iLive" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwH-Pa-RcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="-612"/>
+            <point key="canvasLocation" x="2324" y="-633"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="k9l-S5-hci">
+            <objects>
+                <viewController storyboardIdentifier="VideoViewController" id="svj-WV-CSP" customClass="VideoViewController" customModule="iLive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mEU-PQ-jKE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IbP-pJ-1Nx">
+                                <rect key="frame" x="-0.5" y="10" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O10-HC-yvw" customClass="PHLivePhotoView">
+                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IbP-pJ-1Nx" firstAttribute="height" secondItem="mEU-PQ-jKE" secondAttribute="height" id="9Ky-4X-pXX"/>
+                            <constraint firstItem="O10-HC-yvw" firstAttribute="width" secondItem="mEU-PQ-jKE" secondAttribute="width" id="XzU-fJ-FdP"/>
+                            <constraint firstItem="O10-HC-yvw" firstAttribute="centerX" secondItem="xdY-aC-92G" secondAttribute="centerX" id="dCm-4u-itB"/>
+                            <constraint firstItem="IbP-pJ-1Nx" firstAttribute="centerY" secondItem="xdY-aC-92G" secondAttribute="centerY" id="ePa-5v-eSz"/>
+                            <constraint firstItem="IbP-pJ-1Nx" firstAttribute="centerX" secondItem="xdY-aC-92G" secondAttribute="centerX" id="gj2-qP-5y5"/>
+                            <constraint firstItem="O10-HC-yvw" firstAttribute="centerY" secondItem="xdY-aC-92G" secondAttribute="centerY" id="nEd-Vi-nhL"/>
+                            <constraint firstItem="IbP-pJ-1Nx" firstAttribute="width" secondItem="mEU-PQ-jKE" secondAttribute="width" id="npW-C9-Dw2"/>
+                            <constraint firstItem="O10-HC-yvw" firstAttribute="height" secondItem="mEU-PQ-jKE" secondAttribute="height" id="xs2-Nv-ZdE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xdY-aC-92G"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="IbP-pJ-1Nx" id="BqR-8O-5Lh"/>
+                        <outlet property="livePhotoView" destination="O10-HC-yvw" id="LYH-8j-McH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WcQ-4K-m7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3146" y="-612"/>
         </scene>
     </scenes>
     <resources>
