@@ -141,12 +141,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             } else {
                 imageName = (image as NSString).lastPathComponent
             }
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as [String]
-            let videoUrl = (paths.last! as NSString).appendingPathComponent(videoName)
-            let imageUrl = (paths.last! as NSString).appendingPathComponent(imageName)
             
             if screenType == .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForDocumentsDirectory(withPath: imageName)) {
-                let request = PHAssetCreationRequest.forAsset()
                 let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 
                 let localPath = directoryURL.appendingPathComponent(imageName)
@@ -184,9 +180,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             } else {
                 imageName = (image as NSString).lastPathComponent
             }
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as [String]
-            let videoUrl = (paths.last! as NSString).appendingPathComponent(videoName)
-            let imageUrl = (paths.last! as NSString).appendingPathComponent(imageName)
             
             if screenType == .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForDocumentsDirectory(withPath: imageName)) {
                 hud = MBProgressHUD(view: view)
