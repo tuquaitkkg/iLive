@@ -45,62 +45,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.dataSource = self
         self.delegate = self
         
-        doneButton = UIButton(type: .custom)
-        doneButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-        doneButton.setImage(UIImage(named: "ic_back"), for: .normal)
-        doneButton.frame = CGRect(x: view.frame.size.width/2 + 100, y: view.frame.size.height - 140, width: 40.0, height: 40.0)
-        doneButton.addTarget(self, action: #selector(closeView), for: .touchUpInside)
-        doneButton.layer.borderWidth = 2.0
-        doneButton.layer.borderColor = UIColor.white.cgColor
-        doneButton.layer.cornerRadius = doneButton.frame.size.width/2
-        doneButton.layer.masksToBounds = true
-        
-        downloadButton = UIButton(type: .custom)
-        downloadButton.imageEdgeInsets = UIEdgeInsetsMake(-10, -10, -10, -10)
-        downloadButton.setTitle("Save", for: .normal)
-        downloadButton.frame = CGRect(x: (view.frame.size.width - 60)/2, y: view.frame.size.height - 150, width: 60.0, height: 60.0)
-        downloadButton.addTarget(self, action: #selector(downloadMovie), for: .touchUpInside)
-        downloadButton.layer.borderWidth = 2.0
-        downloadButton.layer.borderColor = UIColor.white.cgColor
-        downloadButton.layer.cornerRadius = downloadButton.frame.size.width/2
-        downloadButton.layer.masksToBounds = true
-        
-        favoriteButton = UIButton(type: .custom)
-        favoriteButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-        favoriteButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
-        favoriteButton.imageView?.contentMode = .scaleAspectFit
-        favoriteButton.frame = CGRect(x: view.frame.size.width/2 + 40, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
-        favoriteButton.layer.borderWidth = 2.0
-        favoriteButton.layer.borderColor = UIColor.white.cgColor
-        favoriteButton.layer.cornerRadius = favoriteButton.frame.size.width/2
-        favoriteButton.layer.masksToBounds = true
-        
-        settingButton = UIButton(type: .custom)
-        settingButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-        settingButton.setImage(UIImage(named: "ic_setting"), for: .normal)
-        settingButton.imageView?.contentMode = .scaleAspectFit
-        settingButton.frame = CGRect(x: view.frame.size.width/2 - 90, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
-        settingButton.layer.borderWidth = 2.0
-        settingButton.layer.borderColor = UIColor.white.cgColor
-        settingButton.layer.cornerRadius = settingButton.frame.size.width/2
-        settingButton.layer.masksToBounds = true
-        
-        shareButton = UIButton(type: .custom)
-        shareButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 10, 5)
-        shareButton.setImage(UIImage(named: "ic_share"), for: .normal)
-        shareButton.imageView?.contentMode = .scaleAspectFit
-        shareButton.frame = CGRect(x: view.frame.size.width/2 - 140, y: view.frame.size.height - 140, width: 40.0, height: 40.0)
-        shareButton.addTarget(self, action: #selector(shareFile), for: .touchUpInside)
-        shareButton.layer.borderWidth = 2.0
-        shareButton.layer.borderColor = UIColor.white.cgColor
-        shareButton.layer.cornerRadius = shareButton.frame.size.width/2
-        shareButton.layer.masksToBounds = true
-        
-        view.addSubview(doneButton)
-        view.addSubview(downloadButton)
-        view.addSubview(favoriteButton)
-        view.addSubview(settingButton)
-        view.addSubview(shareButton)
+        initButtons()
         
         imagePreview = UIImageView(frame: view.bounds)
         view.addSubview(imagePreview)
@@ -119,6 +64,61 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initButtons() -> Void {
+        doneButton = UIButton(type: .custom)
+        doneButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        doneButton.setImage(UIImage(named: "ic_back"), for: .normal)
+        doneButton.frame = CGRect(x: 20, y: 20, width: 40.0, height: 40.0)
+        doneButton.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        doneButton.layer.borderWidth = 2.0
+        doneButton.layer.borderColor = UIColor.white.cgColor
+        doneButton.layer.cornerRadius = doneButton.frame.size.width/2
+        doneButton.layer.masksToBounds = true
+        
+        downloadButton = UIButton(type: .custom)
+        downloadButton.setTitle("Save", for: .normal)
+        downloadButton.frame = CGRect(x: (view.frame.size.width - 60)/2, y: view.frame.size.height - 150, width: 60.0, height: 60.0)
+        downloadButton.addTarget(self, action: #selector(downloadMovie), for: .touchUpInside)
+        downloadButton.layer.borderWidth = 2.0
+        downloadButton.layer.borderColor = UIColor.white.cgColor
+        downloadButton.layer.cornerRadius = downloadButton.frame.size.width/2
+        downloadButton.layer.masksToBounds = true
+        
+        settingButton = UIButton(type: .custom)
+        settingButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        settingButton.setImage(UIImage(named: "ic_setting"), for: .normal)
+        settingButton.imageView?.contentMode = .scaleAspectFit
+        settingButton.frame = CGRect(x: view.frame.size.width/2 - 90, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
+        settingButton.addTarget(self, action: #selector(goToSetting), for: .touchUpInside)
+        settingButton.layer.borderWidth = 2.0
+        settingButton.layer.borderColor = UIColor.white.cgColor
+        settingButton.layer.cornerRadius = settingButton.frame.size.width/2
+        settingButton.layer.masksToBounds = true
+        
+        shareButton = UIButton(type: .custom)
+        shareButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 10, 5)
+        shareButton.setImage(UIImage(named: "ic_share"), for: .normal)
+        shareButton.imageView?.contentMode = .scaleAspectFit
+        shareButton.frame = CGRect(x: view.frame.size.width/2 + 40, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
+        shareButton.addTarget(self, action: #selector(shareFile), for: .touchUpInside)
+        shareButton.layer.borderWidth = 2.0
+        shareButton.layer.borderColor = UIColor.white.cgColor
+        shareButton.layer.cornerRadius = shareButton.frame.size.width/2
+        shareButton.layer.masksToBounds = true
+        
+        view.addSubview(doneButton)
+        view.addSubview(downloadButton)
+        view.addSubview(settingButton)
+        view.addSubview(shareButton)
+    }
+    
+    @objc func goToSetting() {
+        let settingVC = storyboard!.instantiateViewController(withIdentifier: "SettingTableViewController") as! SettingTableViewController
+        let navController = UINavigationController(rootViewController: settingVC)
+        
+        present(navController, animated: true, completion: nil)
     }
     
     @objc func shareFile() {
@@ -255,6 +255,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         if completed {
             let videoVC = viewControllers?.last as! VideoViewController
             indexSelected = videoVC.index;
+        } else {
+            initButtons()
         }
     }
     

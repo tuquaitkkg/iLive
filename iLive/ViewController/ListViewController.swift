@@ -19,7 +19,7 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         if titleCategory == "" || titleCategory.isEmpty {
-            titleCategory = "All Live Wallpapers"
+            titleCategory = "New"
         }
         navigationItem.title = titleCategory
         for livePhoto in DataStore.sharedInstance.categoryList {
