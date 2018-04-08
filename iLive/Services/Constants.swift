@@ -41,8 +41,11 @@ struct Constants {
     }
     
     struct AdNetwork {
-        static let AdmobInterstitial = "ca-app-pub-1947012962477196/3445976267"
-        static let AdmobBanner = "ca-app-pub-1947012962477196/7876175862"
+        static let AdmobInterstitial = "ca-app-pub-4480769647336188/3292710154"
+        static let AdmobBanner = "ca-app-pub-4480769647336188/1815976957"
+        static let AdmobID = "ca-app-pub-4480769647336188~9339243757"
+        static let AdmobBannerTest = "ca-app-pub-3940256099942544/2934735716"
+        static let AdmobInterstitialTest = "ca-app-pub-3940256099942544/4411468910"
     }
     
     struct NotificationIdentifier {

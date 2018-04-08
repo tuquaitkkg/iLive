@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import PhotosUI
 import FCFileManager
+import GoogleMobileAds
 
 enum ScreenType {
     case LiveWallpaperScreen
@@ -17,11 +18,12 @@ enum ScreenType {
     case FeaturedScreen
 }
 
-class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, GADInterstitialDelegate {
     
     
     
     var indexSelected = 0
+    var countClick = 0
     var videosArray = [LivePhotoItem]()
     var imagePreview: UIImageView!
     var doneButton: UIButton!
@@ -33,11 +35,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var hud: MBProgressHUD!
     var screenType: ScreenType!
     var purchased = false
-    //    var interstitialAd: GADInterstitial!
+    var interstitialAd: GADInterstitial!
+    var bannerView : GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        interstitialAd = createAndLoadInterstitialAd()
         // Do any additional setup after loading the view.
         let initialViewController = viewControllerAtIndex(index: indexSelected)
         initialViewController.screenType = screenType
@@ -54,6 +57,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isStatusBarHidden = true
+        createGADBannerView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -266,6 +270,60 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         imageViewController.item = videosArray[index]
         imageViewController.screenType = screenType
         return imageViewController
+    }
+    
+    func createGADBannerView() -> Void {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = Constants.AdNetwork.AdmobBannerTest
+        bannerView.rootViewController = self
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID, "eeb35843469fcc9d27a343f8b9183e6a","1ea46263048498a00a864fd59a2e47e1"]
+        bannerView.load(request)
+        addBannerViewToView(bannerView)
+//        view.addSubview(bannerView)
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
+    
+    func createAndLoadInterstitialAd() -> GADInterstitial {
+        let interstitial = GADInterstitial(adUnitID: Constants.AdNetwork.AdmobInterstitialTest)
+        interstitial.delegate = self
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID, "eeb35843469fcc9d27a343f8b9183e6a","1ea46263048498a00a864fd59a2e47e1"]
+        interstitial.load(request)
+        return interstitial
+    }
+    
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        interstitialAd = createAndLoadInterstitialAd()
+    }
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitial)  {
+        print("Ad Received")
+        if ad.isReady {
+            if countClick % 3 == 0 {
+                interstitialAd.present(fromRootViewController: self)
+            }
+        }
     }
 }
 

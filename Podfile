@@ -10,6 +10,7 @@ target 'iLive' do
   pod 'SDWebImage', '~>4.0'
   pod 'REFrostedViewController', '~> 2.4'
   pod 'FCFileManager'
+  pod 'Google-Mobile-Ads-SDK'
   # Pods for iLive
 
 end

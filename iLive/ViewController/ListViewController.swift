@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class ListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ListViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var clListWallpaper: UICollectionView!
     var titleCategory = ""
@@ -16,8 +17,15 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var counter = 0
     var purchased = false
 
+    @IBOutlet weak var bannerView: GADBannerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        bannerView.adUnitID = Constants.AdNetwork.AdmobBannerTest
+        bannerView.rootViewController = self
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID, "eeb35843469fcc9d27a343f8b9183e6a","1ea46263048498a00a864fd59a2e47e1"]
+        bannerView.load(request)
+        
         if titleCategory == "" || titleCategory.isEmpty {
             titleCategory = "New"
         }
@@ -76,24 +84,25 @@ class ListViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         clListWallpaper.deselectItem(at: indexPath, animated: false)
         counter = counter + 1
-        if counter < 10000000
+//        if counter < 6
 //            || WallpaperProduct.store.isProductPurchased(WallpaperProduct.AllWallpapers)
-        {
+//        {
             let pageViewController = storyboard!.instantiateViewController(withIdentifier: "PageViewController") as! PageViewController
+            pageViewController.countClick = counter
             pageViewController.indexSelected = indexPath.item
             pageViewController.videosArray = arrayWallpaper
             pageViewController.screenType = .LiveWallpaperScreen
             pageViewController.purchased = purchased
             present(pageViewController, animated: true, completion: nil)
-        } else {
-            let alertController = UIAlertController(title: "Purchase", message: "You reached maximum times to view live wallpapers. Please go to Home tab to unlock all.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                self.tabBarController?.selectedIndex = 3
-            })
-            alertController.addAction(okAction)
-            
-            present(alertController, animated: true, completion: nil)
-        }
+//        } else {
+//            let alertController = UIAlertController(title: "Purchase", message: "You reached maximum times to view live wallpapers. Please go to Home tab to unlock all.", preferredStyle: .alert)
+//            let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+//                self.tabBarController?.selectedIndex = 3
+//            })
+//            alertController.addAction(okAction)
+//            
+//            present(alertController, animated: true, completion: nil)
+//        }
     }
 
 }
