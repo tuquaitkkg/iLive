@@ -8,8 +8,9 @@
 
 import UIKit
 import GoogleMobileAds
+import SDWebImage
 
-class ListViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ListViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, SDWebImageManagerDelegate {
     
     @IBOutlet weak var clListWallpaper: UICollectionView!
     var titleCategory = ""
@@ -61,6 +62,11 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
 //            bannerHeight.constant = 50
 //        }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        SDWebImageManager.shared().delegate = self;
+    }
 
     @IBAction func showMenu(_ sender: Any) {
         frostedViewController.presentMenuViewController()
@@ -103,6 +109,26 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
 //            
 //            present(alertController, animated: true, completion: nil)
 //        }
+    }
+    
+    func imageManager(_ imageManager: SDWebImageManager, transformDownloadedImage image: UIImage?, with imageURL: URL?) -> UIImage? {
+        guard let image = image, let imageURL = imageURL else {
+            return nil
+        }
+        print(imageURL)
+        let size : CGSize
+        let screenSize = UIScreen.main.bounds.size
+        if UI_USER_INTERFACE_IDIOM() == .phone {
+            size = CGSize(width: screenSize.width/3 - 1, height: (screenSize.width/3 - 1)*screenSize.height/screenSize.width)
+        } else {
+            size = CGSize(width: screenSize.width/5 - 1, height: (screenSize.width/5 - 1)*screenSize.height/screenSize.width)
+        }
+        UIGraphicsBeginImageContextWithOptions(size, !SDCGImageRefContainsAlpha(image.cgImage), 2)
+        image.draw(in: CGRect(origin: .zero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage
     }
 
 }
