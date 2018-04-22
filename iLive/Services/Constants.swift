@@ -27,7 +27,7 @@ struct Constants {
     static let PadColumns: CGFloat = 5.0
     
     struct API {
-        static let LiveWallpaper = "http://www.novasoft.ro/wallpapers/items.json"
+        static let LiveWallpaper = "http://www.webservice.pixsterstudio.com/livewallpaper.php?key=dYrtr3GGPVuhSMvm"
         static let BlackWallpaper = "https://www.dropbox.com/sh/dzwoc18vug3iptg/AAAUG8H3WdEn8a_ZCNO0mEV9a?dl=0"
         static let FeaturedFileUrl = "https://dl.dropboxusercontent.com/s/lwdbonwvxcizx0m/tien.txt"
         static let Featured1 = "http://livewallpapers.ticktockapps.com/livephoto/res/images?app=livepapers233&page=1&version=1.1.0"

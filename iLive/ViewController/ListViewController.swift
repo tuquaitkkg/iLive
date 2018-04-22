@@ -14,7 +14,7 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var clListWallpaper: UICollectionView!
     var titleCategory = ""
-    var arrayWallpaper = [LivePhotoItem]()
+    var arrayWallpaper = [LivePhoto]()
     var counter = 0
     var purchased = false
 
@@ -31,12 +31,13 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
             titleCategory = "New"
         }
         navigationItem.title = titleCategory
-        for livePhoto in DataStore.sharedInstance.categoryList {
-            if livePhoto.category?.lowercased() == titleCategory.lowercased() {
-                arrayWallpaper = livePhoto.items!
-                break
-            }
-        }
+        arrayWallpaper = DataStore.sharedInstance.categoryList[0].livePhotos!
+//        for livePhoto in DataStore.sharedInstance.categoryList {
+////            if livePhoto.category?.lowercased() == titleCategory.lowercased() {
+//                arrayWallpaper = livePhoto
+//                break
+////            }
+//        }
         
         let screenSize = UIScreen.main.bounds.size
         if UI_USER_INTERFACE_IDIOM() == .phone {
@@ -82,8 +83,8 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallpaperCell", for: indexPath) as! WallpaperCell
-        let item = arrayWallpaper[indexPath.item]
-        cell.imageView.sd_setImage(with: NSURL(string: item.image!) as URL?, placeholderImage: nil)
+        let item = arrayWallpaper[indexPath.row]
+        cell.imageView.sd_setImage(with: NSURL(string: item.items!.image!) as URL?, placeholderImage: nil)
         return cell
     }
     

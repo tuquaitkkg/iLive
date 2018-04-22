@@ -17,7 +17,7 @@ class MenuViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         for livePhoto in DataStore.sharedInstance.categoryList {
-            categoriesArray.append(livePhoto.category!)
+//            categoriesArray.append(livePhoto.category!)
         }
         
         tableView.separatorColor = UIColor(red: 150.0/255.0, green: 161.0/255.0, blue: 177.0/255.0, alpha: 1.0)

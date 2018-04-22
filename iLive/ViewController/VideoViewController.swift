@@ -14,7 +14,7 @@ import FCFileManager
 
 class VideoViewController: UIViewController {
     
-    var item: LivePhotoItem?
+    var item: LivePhoto?
     var index = 0
     var hud: MBProgressHUD!
     var screenType: ScreenType = .LiveWallpaperScreen
@@ -27,7 +27,7 @@ class VideoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if let item = item, let video = item.video, let image = item.image {
+        if let item = item, let video = item.items?.video, let image = item.items?.image {
             if screenType == .LiveWallpaperScreen || screenType == .FeaturedScreen {
                 var videoPath: String
                 if video.hasSuffix("/video.MOV") {
@@ -46,7 +46,7 @@ class VideoViewController: UIViewController {
                 }
                 if !FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: videoPath)) {
                     AppDelegate().sharedInstance().showLoading(isShow: true)
-                    saveFileToDocumentWithPath(url: item.video!)
+                    saveFileToDocumentWithPath(url: (item.items?.video)!)
                 } else {
                     let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                     let imageUrl = directoryURL.appendingPathComponent(imagePath)
@@ -201,7 +201,7 @@ class VideoViewController: UIViewController {
         
         var videoLocalPath: URL?
         
-        if let item = item, let image = item.image {
+        if let item = item, let image = item.items?.image {
             var imageName: String
             if image.hasSuffix("/pic.JPG") {
                 let urls = image.characters.split(separator: "/").map { String($0) }
@@ -232,7 +232,7 @@ class VideoViewController: UIViewController {
                     let destination: DownloadRequest.DownloadFileDestination = { _, _ in
                         return (imageLocalPath!, [.createIntermediateDirectories, .removePreviousFile])
                     }
-                    Alamofire.download(item.image!, method: .get, parameters: nil, encoding: JSONEncoding.default, to: destination)
+                    Alamofire.download((item.items?.image)!, method: .get, parameters: nil, encoding: JSONEncoding.default, to: destination)
                         .response { response in
                             AppDelegate().sharedInstance().showLoading(isShow: false)
                             if let imageLocalPath = imageLocalPath {

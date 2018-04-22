@@ -52,7 +52,7 @@ struct APIManager {
 
 public struct LivePhotoService: Gettable {
     var path: String?
-    func get(completionHandler: @escaping (Result<[LivePhoto]>) -> Void) {
+    func get(completionHandler: @escaping (Result<[LivePhotoResponse]>) -> Void) {
         if let path = path {
             Alamofire.request(path, method: .get, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
@@ -61,10 +61,10 @@ public struct LivePhotoService: Gettable {
                         if response.response?.statusCode == 200 || response.response?.statusCode == 201 {
                             let livePhotoResponse = Mapper<LivePhotoResponse>().map(JSONObject: value)
                             if let livePhotoResponse = livePhotoResponse, let livePhotos = livePhotoResponse.livePhotos {
-                                completionHandler(.Success(livePhotos))
+                                completionHandler(.Success([livePhotoResponse]))
                             }
                         } else {
-                            completionHandler(.Success([LivePhoto]()))
+                            completionHandler(.Success([LivePhotoResponse]()))
                         }
                     case .failure(let error):
                         completionHandler(.Failure(error.localizedDescription))

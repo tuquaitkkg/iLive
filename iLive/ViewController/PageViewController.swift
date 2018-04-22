@@ -24,7 +24,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     var indexSelected = 0
     var countClick = 0
-    var videosArray = [LivePhotoItem]()
+    var videosArray = [LivePhoto]()
     var imagePreview: UIImageView!
     var doneButton: UIButton!
     var shareButton: UIButton!
@@ -131,7 +131,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         var imageName: String = ""
         var videoName: String = ""
         let item = videosArray[indexSelected]
-        if let video = item.video, let image = item.image {
+        if let video = item.items?.video, let image = item.items?.image {
             if video.hasSuffix("/video.MOV") {
                 let urls = video.characters.split(separator: "/").map { String($0) }
                 videoName = urls[urls.count - 2] + urls[urls.count - 1]
@@ -170,7 +170,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         var imageName: String = ""
         var videoName: String = ""
         let item = videosArray[indexSelected]
-        if let video = item.video, let image = item.image {
+        if let video = item.items?.video, let image = item.items?.image {
             if video.hasSuffix("/video.MOV") {
                 let urls = video.characters.split(separator: "/").map { String($0) }
                 videoName = urls[urls.count - 2] + urls[urls.count - 1]

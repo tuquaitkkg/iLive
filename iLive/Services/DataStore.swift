@@ -11,7 +11,7 @@ import Foundation
 class DataStore {
     
     static let sharedInstance = DataStore()
-    var categoryList = [LivePhoto]()
+    var categoryList = [LivePhotoResponse]()
     var blackWallpaperList = [BlackWallpaper]()
     var featuredList = [Featured]()
     var counter = 0

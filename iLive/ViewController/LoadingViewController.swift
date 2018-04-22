@@ -15,15 +15,15 @@ class LoadingViewController: BaseViewController {
         loadWallpapers()
     }
     
-    func getPhotos<Service: Gettable>(fromService service: Service) where Service.Data == [LivePhoto] {
+    func getPhotos<Service: Gettable>(fromService service: Service) where Service.Data == [LivePhotoResponse] {
         service.get { [weak self] (result) in
             switch result {
             case .Success(let photos):
                 DataStore.sharedInstance.categoryList = photos
-                self?.downloadFeatured(completionHandle: {
+//                self?.downloadFeatured(completionHandle: {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.setupRootView()
-                })
+//                })
 
             case .Failure(_):
                 self?.showAlertView()
