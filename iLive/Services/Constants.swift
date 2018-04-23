@@ -53,7 +53,7 @@ struct Constants {
     }
     
     struct Settings {
-        static let barColor = UIColor(hex: 0x161618)
+        static let barColor = UIColor(hex: 0xfa4857)
         static let backgroundColor = UIColor(hex: 0x2a292d)
     }
 }

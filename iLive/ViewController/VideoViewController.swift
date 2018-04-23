@@ -75,7 +75,6 @@ class VideoViewController: UIViewController {
             videoPath = videoPath.replacingOccurrences(of: ".jpg", with: "")
             let videoName = videoPath + ".mov";
             if !FCFileManager.isFileItem(atPath: FilePaths.VidToLive.livePath.appending(videoName)) {
-                AppDelegate().sharedInstance().showLoading(isShow: true)
                 if let filePath = Bundle.main.path(forResource: videoPath, ofType: "mov") {
                     saveFileToDocumentWithPath(url: filePath)
                 }
@@ -202,15 +201,17 @@ class VideoViewController: UIViewController {
                     }
             }
         } else if let item = item as? String{
-            var imagePath: String
-            imagePath = (item as NSString).lastPathComponent
-            var videoPath = imagePath.replacingOccurrences(of: "imagexxx", with: "videoxxx")
-            videoPath = videoPath.replacingOccurrences(of: ".jpg", with: "")
-            let videoName = videoPath + ".mov";
-            if let filePath = Bundle.main.path(forResource: videoPath, ofType: "mov") {
-                self.storeMovieFile(videoUrlString: filePath, videoName: videoName, assetIdentifier: assetIdentifier)
-            }
-//            if let imageLocalPath = item {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                AppDelegate().sharedInstance().showLoading(isShow: true)
+                var imagePath: String
+                imagePath = (item as NSString).lastPathComponent
+                var videoPath = imagePath.replacingOccurrences(of: "imagexxx", with: "videoxxx")
+                videoPath = videoPath.replacingOccurrences(of: ".jpg", with: "")
+                let videoName = videoPath + ".mov";
+                if let filePath = Bundle.main.path(forResource: videoPath, ofType: "mov") {
+                    self.storeMovieFile(videoUrlString: filePath, videoName: videoName, assetIdentifier: assetIdentifier)
+                }
+                //            if let imageLocalPath = item {
                 self.storeImageFile(imageUrlString: item, imageName: imagePath, assetIdentifier: assetIdentifier, completion: { (img) in
                     PHLivePhoto.request(withResourceFileURLs: [URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(videoName)),URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(imagePath))], placeholderImage: nil, targetSize: img.size, contentMode: .default, resultHandler: { (livePhoto, info) in
                         DispatchQueue.main.async {
@@ -222,8 +223,9 @@ class VideoViewController: UIViewController {
                         }
                     })
                 })
-//            }
-            AppDelegate().sharedInstance().showLoading(isShow: false)
+                //            }
+                AppDelegate().sharedInstance().showLoading(isShow: false)
+            }
         }
     }
 

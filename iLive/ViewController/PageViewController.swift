@@ -155,13 +155,24 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                     activityViewController.popoverPresentationController?.sourceView = shareButton
                     self.present(activityViewController, animated: true, completion: nil)
                 } else if screenType != .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) {
-                    let urlImage : URL = NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) as URL
                     let urlVideo : URL = NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) as URL
-                    let activityViewController = UIActivityViewController(activityItems: [urlImage,urlVideo], applicationActivities: nil)
+                    let activityViewController = UIActivityViewController(activityItems: [urlVideo], applicationActivities: nil)
                     activityViewController.popoverPresentationController?.sourceView = shareButton
                     self.present(activityViewController, animated: true, completion: nil)
                 }
             }
+        } else if let item = videosArray[indexSelected] as? String {
+            var imagePath: String
+            imagePath = (item as NSString).lastPathComponent
+            var videoPath = imagePath.replacingOccurrences(of: "imagexxx", with: "videoxxx")
+            videoPath = videoPath.replacingOccurrences(of: ".jpg", with: "")
+            let videoName = videoPath + ".mov";
+            let filePath = Bundle.main.path(forResource: videoPath, ofType: "mov")
+            
+            let urlVideo : URL = NSURL(fileURLWithPath: FilePaths.VidToLive.livePath.appending(videoName)) as URL
+            let activityViewController = UIActivityViewController(activityItems: [urlVideo], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = shareButton
+            self.present(activityViewController, animated: true, completion: nil)
         }
     }
     
@@ -223,8 +234,29 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                     }
                 }
             }
-        } else if let item = videosArray[indexSelected] as? LivePhoto{
+        } else if let item = videosArray[indexSelected] as? String{
+            hud = MBProgressHUD(view: view)
+            view.addSubview(hud)
+            hud.mode = .indeterminate
+            hud.labelText = "Saving ..."
+            hud.show(true)
+            var imagePath: String
+            imagePath = (item as NSString).lastPathComponent
+            var videoPath = imagePath.replacingOccurrences(of: "imagexxx", with: "videoxxx")
+            videoPath = videoPath.replacingOccurrences(of: ".jpg", with: "")
+            let videoName = videoPath + ".mov";
+            let filePath = Bundle.main.path(forResource: videoPath, ofType: "mov")
             
+            PHPhotoLibrary.shared().performChanges({
+                let request = PHAssetCreationRequest.forAsset()
+                request.addResource(with: .photo, fileURL: NSURL(fileURLWithPath: FilePaths.VidToLive.livePath.appending(imagePath)) as URL, options: nil)
+                request.addResource(with: .pairedVideo, fileURL: NSURL(fileURLWithPath: FilePaths.VidToLive.livePath.appending(videoName)) as URL, options: nil)
+            }) { (success, error) in
+                DispatchQueue.main.async {
+                    self.hud.hide(true)
+                    //
+                }
+            }
         }
     }
     

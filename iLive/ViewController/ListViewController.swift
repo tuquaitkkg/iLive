@@ -31,9 +31,12 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
             titleCategory = "New"
         }
         navigationItem.title = titleCategory
-        newArray.addObjects(from: DataStore.sharedInstance.categoryList[0].livePhotos!);
+        
         let files = Bundle.main.paths(forResourcesOfType: "jpg", inDirectory: nil)
         newArray.addObjects(from: files);
+        newArray.addObjects(from: DataStore.sharedInstance.categoryList[0].livePhotos!);
+        
+        
         
         let screenSize = UIScreen.main.bounds.size
         if UI_USER_INTERFACE_IDIOM() == .phone {
