@@ -39,6 +39,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
         
         view.addSubview(imageView)
         tableView.tableHeaderView = view
+        tableView.tableFooterView = UIView.init()
         tableView.reloadData()
     }
     
@@ -61,7 +62,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,14 +72,16 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
         case 0:
             cell.textLabel?.text = "New"
         case 1:
-            cell.textLabel?.text = "Privacy Policy"
+            cell.textLabel?.text = "Favorite"
         case 2:
-            cell.textLabel?.text = "Terms of Use"
+            cell.textLabel?.text = "Privacy Policy"
         case 3:
-            cell.textLabel?.text = "Restore Puchase"
+            cell.textLabel?.text = "Terms of Use"
         case 4:
-            cell.textLabel?.text = "Support"
+            cell.textLabel?.text = "Restore Puchase"
         case 5:
+            cell.textLabel?.text = "Support"
+        case 6:
             cell.textLabel?.text = "Share this app"
         default:
             cell.textLabel?.text = ""
@@ -93,19 +96,26 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
         switch indexPath.row {
         case 0:
             let liveVC = storyboard?.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
+            liveVC.titleCategory = "New"
             navigationController.viewControllers = [liveVC]
             frostedViewController.contentViewController = navigationController
             frostedViewController.hideMenuViewController()
         case 1:
+            let liveVC = storyboard?.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
+            navigationController.viewControllers = [liveVC]
+            liveVC.titleCategory = "Favorite"
+            frostedViewController.contentViewController = navigationController
+            frostedViewController.hideMenuViewController()
+        case 2:
             let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
             navigationController.viewControllers = [termVC]
             frostedViewController.contentViewController = navigationController
             frostedViewController.hideMenuViewController()
-        case 2:
-            break
         case 3:
             break
         case 4:
+            break
+        case 5:
             let mailComposeViewController = configuredMailComposeViewController()
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: {
@@ -115,7 +125,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             } else {
                 self.showSendMailErrorAlert()
             }
-        case 5:
+        case 6:
             let url : URL = URL.init(string: "https://itunes.apple.com/us/app/connect-crewlounge/id1355295696?ls=1&mt=8")!
             let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             let cell = tableView.cellForRow(at: indexPath)

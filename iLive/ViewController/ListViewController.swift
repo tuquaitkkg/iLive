@@ -32,10 +32,6 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
         }
         navigationItem.title = titleCategory
         
-        let files = Bundle.main.paths(forResourcesOfType: "jpg", inDirectory: nil)
-        newArray.addObjects(from: files);
-        newArray.addObjects(from: DataStore.sharedInstance.categoryList[0].livePhotos!);
-        
         
         
         let screenSize = UIScreen.main.bounds.size
@@ -55,6 +51,30 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        newArray = []
+        if titleCategory == "New" {
+            let files = Bundle.main.paths(forResourcesOfType: "jpg", inDirectory: nil)
+            newArray.addObjects(from: files);
+            newArray.addObjects(from: DataStore.sharedInstance.categoryList[0].livePhotos!);
+        } else {
+            if (UserDefaults.standard.object(forKey: "favoriteFile") != nil) {
+                var favorite : NSMutableArray = []
+                favorite = NSMutableArray.init(array: UserDefaults.standard.array(forKey: "favoriteFile")!)
+                for fileName in favorite {
+                    if (fileName as! String).contains("offline") {
+                        let file = Bundle.main.path(forResource: fileName as? String, ofType: nil)
+                        newArray.add(file as Any)
+                    } else {
+                        var online:[LivePhoto] = [LivePhoto]()
+                        online = DataStore.sharedInstance.categoryList[0].livePhotos!;
+                        let filtered_list = online.filter({$0.items?.image == (fileName as! String)})
+                        newArray.addObjects(from: filtered_list)
+                    }
+                }
+                
+            }
+        }
+        self.clListWallpaper.reloadData()
 //        purchased = UserDefaults.standardUserDefaults().boolForKey(WallpaperProduct.AllWallpapers)
 //        if purchased {
 //            bannerHeight.constant = 0

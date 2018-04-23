@@ -37,6 +37,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var purchased = false
     var interstitialAd: GADInterstitial!
     var bannerView : GADBannerView!
+    var favoriteFile : NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +72,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func initButtons() -> Void {
+        if (UserDefaults.standard.object(forKey: "favoriteFile") != nil) {
+            favoriteFile = NSMutableArray.init(array: UserDefaults.standard.array(forKey: "favoriteFile")!)
+        }
+        
         doneButton = UIButton(type: .custom)
         doneButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         doneButton.setImage(UIImage(named: "ic_back"), for: .normal)
@@ -80,6 +85,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         doneButton.layer.borderColor = UIColor.white.cgColor
         doneButton.layer.cornerRadius = doneButton.frame.size.width/2
         doneButton.layer.masksToBounds = true
+        doneButton.tag = 1
         
         downloadButton = UIButton(type: .custom)
         downloadButton.setTitle("Save", for: .normal)
@@ -89,18 +95,34 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         downloadButton.layer.borderColor = UIColor.white.cgColor
         downloadButton.layer.cornerRadius = downloadButton.frame.size.width/2
         downloadButton.layer.masksToBounds = true
+        downloadButton.tag = 1
         
         let padding : CGFloat = 80
         settingButton = UIButton(type: .custom)
         settingButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-        settingButton.setImage(UIImage(named: "ic_setting"), for: .normal)
+        settingButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
+        settingButton.setImage(UIImage(named: "ic_back"), for: .selected)
         settingButton.imageView?.contentMode = .scaleAspectFit
         settingButton.frame = CGRect(x: view.frame.size.width/2 - 50 - padding, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
-        settingButton.addTarget(self, action: #selector(goToSetting), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(clickFavorite), for: .touchUpInside)
         settingButton.layer.borderWidth = 2.0
         settingButton.layer.borderColor = UIColor.white.cgColor
         settingButton.layer.cornerRadius = settingButton.frame.size.width/2
         settingButton.layer.masksToBounds = true
+        settingButton.tag = 1
+        if let item = videosArray[indexSelected] as? LivePhoto {
+            if favoriteFile.contains(item.items?.image as Any) {
+                settingButton.isSelected = true
+            } else {
+                settingButton.isSelected = false
+            }
+        } else if let item = videosArray[indexSelected] as? String {
+            if favoriteFile.contains((item as NSString).lastPathComponent) {
+                settingButton.isSelected = true
+            } else {
+                settingButton.isSelected = false
+            }
+        }
         
         shareButton = UIButton(type: .custom)
         shareButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 10, 5)
@@ -112,20 +134,39 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         shareButton.layer.borderColor = UIColor.white.cgColor
         shareButton.layer.cornerRadius = shareButton.frame.size.width/2
         shareButton.layer.masksToBounds = true
+        shareButton.tag = 1
         
+        for button in self.view.subviews {
+            if button.tag == 1 {
+                button.removeFromSuperview()
+            }
+        }
         view.addSubview(doneButton)
         view.addSubview(downloadButton)
         view.addSubview(settingButton)
         view.addSubview(shareButton)
     }
     
-    @objc func goToSetting() {
-        
+    @objc func clickFavorite() {
+        settingButton.isSelected = !settingButton.isSelected
+        if let item = videosArray[indexSelected] as? LivePhoto {
+            if settingButton.isSelected {
+                favoriteFile.add(item.items?.image as Any)
+            } else {
+                favoriteFile.remove(item.items?.image as Any)
+            }
+        } else if let item = videosArray[indexSelected] as? String {
+            if settingButton.isSelected {
+                favoriteFile.add((item as NSString).lastPathComponent)
+            } else {
+                favoriteFile.remove((item as NSString).lastPathComponent)
+            }
+        }
+        UserDefaults.standard.set(favoriteFile, forKey: "favoriteFile")
+        UserDefaults.standard.synchronize()
     }
     
     @objc func shareFile() {
-        
-        
         var imageName: String = ""
         var videoName: String = ""
         if let item = videosArray[indexSelected] as? LivePhoto {
@@ -291,6 +332,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         if completed {
             let videoVC = viewControllers?.last as! VideoViewController
             indexSelected = videoVC.index;
+            initButtons()
         } else {
             initButtons()
         }
