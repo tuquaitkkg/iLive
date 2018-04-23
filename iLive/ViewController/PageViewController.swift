@@ -100,8 +100,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let padding : CGFloat = 80
         settingButton = UIButton(type: .custom)
         settingButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-        settingButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
-        settingButton.setImage(UIImage(named: "ic_back"), for: .selected)
+        settingButton.setImage(UIImage(named: "ic_unfavorite"), for: .normal)
+        settingButton.setImage(UIImage(named: "ic_favorite"), for: .selected)
         settingButton.imageView?.contentMode = .scaleAspectFit
         settingButton.frame = CGRect(x: view.frame.size.width/2 - 50 - padding, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
         settingButton.addTarget(self, action: #selector(clickFavorite), for: .touchUpInside)

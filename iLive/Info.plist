@@ -25,6 +25,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Our application needs permission to write photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We would like to access your camera and photos in order to create and upload pictures.</string>
 	<key>UILaunchStoryboardName</key>
@@ -50,7 +52,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Our application needs permission to write photos</string>
 </dict>
 </plist>
