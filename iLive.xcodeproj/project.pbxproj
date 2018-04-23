@@ -15,7 +15,6 @@
 		3D2198C72074D6E500F6C632 /* FeaturedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2198C32074D6E400F6C632 /* FeaturedCell.xib */; };
 		3D2198C82074D6E500F6C632 /* WallpaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2198C42074D6E400F6C632 /* WallpaperCell.swift */; };
 		3D2198C92074D6E500F6C632 /* WallpaperCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2198C52074D6E400F6C632 /* WallpaperCell.xib */; };
-		3D23391A207A0307005CD10D /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D233919207A0307005CD10D /* SettingTableViewController.swift */; };
 		3D23391C207A3E89005CD10D /* policy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D23391B207A3E89005CD10D /* policy.txt */; };
 		3D23391E207A3F4D005CD10D /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23391D207A3F4D005CD10D /* TermsViewController.swift */; };
 		3D286E7620693CC800298FA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D286E7520693CC800298FA7 /* AppDelegate.swift */; };
@@ -164,7 +163,6 @@
 		3D2198C32074D6E400F6C632 /* FeaturedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCell.xib; sourceTree = "<group>"; };
 		3D2198C42074D6E400F6C632 /* WallpaperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperCell.swift; sourceTree = "<group>"; };
 		3D2198C52074D6E400F6C632 /* WallpaperCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallpaperCell.xib; sourceTree = "<group>"; };
-		3D233919207A0307005CD10D /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		3D23391B207A3E89005CD10D /* policy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = policy.txt; sourceTree = "<group>"; };
 		3D23391D207A3F4D005CD10D /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		3D286E7220693CC800298FA7 /* iLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,7 +357,6 @@
 				3D2198BD20748BFE00F6C632 /* LoadingViewController.swift */,
 				3D2963C320786F68003FB61E /* VideoViewController.swift */,
 				3DAF44C12078B6740033895F /* PageViewController.swift */,
-				3D233919207A0307005CD10D /* SettingTableViewController.swift */,
 				3D23391D207A3F4D005CD10D /* TermsViewController.swift */,
 			);
 			path = ViewController;
@@ -840,7 +837,6 @@
 				3D2963C420786F68003FB61E /* VideoViewController.swift in Sources */,
 				3D2198C02074944800F6C632 /* BaseViewController.swift in Sources */,
 				3D9B07152071E09B007F119C /* Post.swift in Sources */,
-				3D23391A207A0307005CD10D /* SettingTableViewController.swift in Sources */,
 				3D9B07192071E1A7007F119C /* PhotoService.swift in Sources */,
 				3D9B07132071E09B007F119C /* LivePhoto.swift in Sources */,
 				3DAF44C62078BFDC0033895F /* QuickTimeMov.swift in Sources */,

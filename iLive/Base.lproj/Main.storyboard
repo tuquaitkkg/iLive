@@ -160,13 +160,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fs0-rD-MhU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mjt-YA-Jyn">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_list" id="C5a-dY-cVU">
-                            <connections>
-                                <action selector="showMenu:" destination="Mbb-dv-DS8" id="qtZ-Lg-ipQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="mjt-YA-Jyn"/>
                     <connections>
                         <outlet property="bannerView" destination="DF1-LS-FjV" id="MpV-JM-UXU"/>
                         <outlet property="clListWallpaper" destination="VV4-Rv-GtT" id="3rm-6n-nLh"/>
@@ -213,43 +207,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcQ-4K-m7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3146" y="-612"/>
-        </scene>
-        <!--Setting Table View Controller-->
-        <scene sceneID="O70-B4-lff">
-            <objects>
-                <tableViewController storyboardIdentifier="SettingTableViewController" id="HPh-F8-FXx" customClass="SettingTableViewController" customModule="iLive" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oXG-eP-FhU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellSetting" textLabel="pEK-gH-GdM" style="IBUITableViewCellStyleDefault" id="NUB-jy-p2P">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NUB-jy-p2P" id="ctO-7v-t2g">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pEK-gH-GdM">
-                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HPh-F8-FXx" id="53M-9H-QUM"/>
-                            <outlet property="delegate" destination="HPh-F8-FXx" id="Plt-FS-qIA"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pJl-9z-Jq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3870" y="-612"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="2Qx-k3-5cr">
@@ -301,6 +258,5 @@
     </scenes>
     <resources>
         <image name="LaunchScreen_image" width="540" height="960"/>
-        <image name="ic_list" width="25" height="25"/>
     </resources>
 </document>

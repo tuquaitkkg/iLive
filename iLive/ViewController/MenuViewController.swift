@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class MenuViewController: UITableViewController {
+class MenuViewController: UITableViewController,MFMailComposeViewControllerDelegate {
     
     var categoriesArray = [String]()
     
@@ -60,24 +61,100 @@ class MenuViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoriesArray.count
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let CellIdentifier = "CellMenu"
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath as IndexPath)
-        cell.textLabel?.text = categoriesArray[indexPath.row]
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "New"
+        case 1:
+            cell.textLabel?.text = "Privacy Policy"
+        case 2:
+            cell.textLabel?.text = "Terms of Use"
+        case 3:
+            cell.textLabel?.text = "Restore Puchase"
+        case 4:
+            cell.textLabel?.text = "Support"
+        case 5:
+            cell.textLabel?.text = "Share this app"
+        default:
+            cell.textLabel?.text = ""
+        }
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
         let navigationController = storyboard?.instantiateViewController(withIdentifier: "contentViewController") as! LiveNavigationController
-        let liveVC = storyboard?.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
-        liveVC.titleCategory = categoriesArray[indexPath.row]
-        navigationController.viewControllers = [liveVC]
-        frostedViewController.contentViewController = navigationController
-        frostedViewController.hideMenuViewController()
+        switch indexPath.row {
+        case 0:
+            let liveVC = storyboard?.instantiateViewController(withIdentifier: "ListViewController") as! ListViewController
+            navigationController.viewControllers = [liveVC]
+            frostedViewController.contentViewController = navigationController
+            frostedViewController.hideMenuViewController()
+        case 1:
+            let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            navigationController.viewControllers = [termVC]
+            frostedViewController.contentViewController = navigationController
+            frostedViewController.hideMenuViewController()
+        case 2:
+            break
+        case 3:
+            break
+        case 4:
+            let mailComposeViewController = configuredMailComposeViewController()
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: {
+                    UIApplication.shared.statusBarStyle = .lightContent
+                    self.frostedViewController.hideMenuViewController()
+                })
+            } else {
+                self.showSendMailErrorAlert()
+            }
+        case 5:
+            let url : URL = URL.init(string: "https://itunes.apple.com/us/app/connect-crewlounge/id1355295696?ls=1&mt=8")!
+            let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            let cell = tableView.cellForRow(at: indexPath)
+            activityViewController.popoverPresentationController?.sourceView = cell
+            self.present(activityViewController, animated: true, completion: {
+                self.frostedViewController.hideMenuViewController()
+            })
+        default:
+            break
+        }
+        
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        mailComposerVC.navigationBar.tintColor = UIColor.white;
+        
+        mailComposerVC.setToRecipients(["hivonghuongdicuatoi90@gmail.com"])
+        //        mailComposerVC.setSubject("Sending you an in-app e-mail...")
+        //        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let alertController = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        
+        let action1 = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            print("You've pressed default");
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(action1)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

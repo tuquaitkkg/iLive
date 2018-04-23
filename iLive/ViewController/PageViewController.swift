@@ -120,10 +120,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     @objc func goToSetting() {
-        let settingVC = storyboard!.instantiateViewController(withIdentifier: "SettingTableViewController") as! SettingTableViewController
-        let navController = UINavigationController(rootViewController: settingVC)
         
-        present(navController, animated: true, completion: nil)
     }
     
     @objc func shareFile() {

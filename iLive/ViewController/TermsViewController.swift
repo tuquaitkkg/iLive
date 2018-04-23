@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TermsViewController: UIViewController {
+class TermsViewController: BaseViewController {
     @IBOutlet weak var lblDetail: UILabel!
     
     override func viewDidLoad() {

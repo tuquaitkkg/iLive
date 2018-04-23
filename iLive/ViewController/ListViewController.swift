@@ -67,10 +67,7 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
         super.viewDidAppear(animated)
         SDWebImageManager.shared().delegate = self;
     }
-
-    @IBAction func showMenu(_ sender: Any) {
-        frostedViewController.presentMenuViewController()
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

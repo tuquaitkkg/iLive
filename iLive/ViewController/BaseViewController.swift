@@ -15,9 +15,21 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let doneButton: UIButton = UIButton(type: .custom)
+        doneButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        doneButton.setImage(UIImage(named: "ic_list"), for: .normal)
+        doneButton.frame = CGRect(x: 10, y: 10, width: 40.0, height: 40.0)
+        doneButton.addTarget(self, action: #selector(showMenuView), for: .touchUpInside)
+        
+        let barButton = UIBarButtonItem(customView: doneButton)
+        //assign button to navigationbar
+        self.navigationItem.leftBarButtonItem = barButton
         // Do any additional setup after loading the view.
         interstitialAd = createAndLoadInterstitialAd()
+    }
+    
+    @objc func showMenuView() {
+        frostedViewController.presentMenuViewController()
     }
     
     func showInformationAlert(title: String, message: String) {
