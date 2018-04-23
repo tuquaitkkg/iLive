@@ -14,7 +14,7 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     @IBOutlet weak var clListWallpaper: UICollectionView!
     var titleCategory = ""
-    var arrayWallpaper = [LivePhoto]()
+    var newArray : NSMutableArray = []
     var counter = 0
     var purchased = false
 
@@ -31,13 +31,9 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
             titleCategory = "New"
         }
         navigationItem.title = titleCategory
-        arrayWallpaper = DataStore.sharedInstance.categoryList[0].livePhotos!
-//        for livePhoto in DataStore.sharedInstance.categoryList {
-////            if livePhoto.category?.lowercased() == titleCategory.lowercased() {
-//                arrayWallpaper = livePhoto
-//                break
-////            }
-//        }
+        newArray.addObjects(from: DataStore.sharedInstance.categoryList[0].livePhotos!);
+        let files = Bundle.main.paths(forResourcesOfType: "jpg", inDirectory: nil)
+        newArray.addObjects(from: files);
         
         let screenSize = UIScreen.main.bounds.size
         if UI_USER_INTERFACE_IDIOM() == .phone {
@@ -78,13 +74,18 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayWallpaper.count
+        return newArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallpaperCell", for: indexPath) as! WallpaperCell
-        let item = arrayWallpaper[indexPath.row]
-        cell.imageView.sd_setImage(with: NSURL(string: item.items!.image!) as URL?, placeholderImage: nil)
+        
+        if let item = newArray[indexPath.row] as? LivePhoto {
+            cell.imageView.sd_setImage(with: NSURL(string: item.items!.image!) as URL?, placeholderImage: nil)
+        } else if let item = newArray[indexPath.row] as? String {
+            cell.imageView.image = UIImage(contentsOfFile: item)
+        }
+        
         return cell
     }
     
@@ -97,7 +98,7 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
             let pageViewController = storyboard!.instantiateViewController(withIdentifier: "PageViewController") as! PageViewController
             pageViewController.countClick = counter
             pageViewController.indexSelected = indexPath.item
-            pageViewController.videosArray = arrayWallpaper
+            pageViewController.videosArray = newArray
             pageViewController.screenType = .LiveWallpaperScreen
             pageViewController.purchased = purchased
             present(pageViewController, animated: true, completion: nil)
@@ -112,24 +113,24 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
 //        }
     }
     
-    func imageManager(_ imageManager: SDWebImageManager, transformDownloadedImage image: UIImage?, with imageURL: URL?) -> UIImage? {
-        guard let image = image, let imageURL = imageURL else {
-            return nil
-        }
-        print(imageURL)
-        let size : CGSize
-        let screenSize = UIScreen.main.bounds.size
-        if UI_USER_INTERFACE_IDIOM() == .phone {
-            size = CGSize(width: screenSize.width/3 - 1, height: (screenSize.width/3 - 1)*screenSize.height/screenSize.width)
-        } else {
-            size = CGSize(width: screenSize.width/5 - 1, height: (screenSize.width/5 - 1)*screenSize.height/screenSize.width)
-        }
-        UIGraphicsBeginImageContextWithOptions(size, !SDCGImageRefContainsAlpha(image.cgImage), 2)
-        image.draw(in: CGRect(origin: .zero, size: size))
-        
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return scaledImage
-    }
+//    func imageManager(_ imageManager: SDWebImageManager, transformDownloadedImage image: UIImage?, with imageURL: URL?) -> UIImage? {
+//        guard let image = image, let imageURL = imageURL else {
+//            return nil
+//        }
+//        print(imageURL)
+//        let size : CGSize
+//        let screenSize = UIScreen.main.bounds.size
+//        if UI_USER_INTERFACE_IDIOM() == .phone {
+//            size = CGSize(width: screenSize.width/3 - 1, height: (screenSize.width/3 - 1)*screenSize.height/screenSize.width)
+//        } else {
+//            size = CGSize(width: screenSize.width/5 - 1, height: (screenSize.width/5 - 1)*screenSize.height/screenSize.width)
+//        }
+//        UIGraphicsBeginImageContextWithOptions(size, !SDCGImageRefContainsAlpha(image.cgImage), 2)
+//        image.draw(in: CGRect(origin: .zero, size: size))
+//        
+//        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        return scaledImage
+//    }
 
 }

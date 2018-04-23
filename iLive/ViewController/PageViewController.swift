@@ -24,7 +24,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     var indexSelected = 0
     var countClick = 0
-    var videosArray = [LivePhoto]()
+    var videosArray : NSMutableArray = []
     var imagePreview: UIImageView!
     var doneButton: UIButton!
     var shareButton: UIButton!
@@ -90,11 +90,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         downloadButton.layer.cornerRadius = downloadButton.frame.size.width/2
         downloadButton.layer.masksToBounds = true
         
+        let padding : CGFloat = 80
         settingButton = UIButton(type: .custom)
         settingButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         settingButton.setImage(UIImage(named: "ic_setting"), for: .normal)
         settingButton.imageView?.contentMode = .scaleAspectFit
-        settingButton.frame = CGRect(x: view.frame.size.width/2 - 90, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
+        settingButton.frame = CGRect(x: view.frame.size.width/2 - 50 - padding, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
         settingButton.addTarget(self, action: #selector(goToSetting), for: .touchUpInside)
         settingButton.layer.borderWidth = 2.0
         settingButton.layer.borderColor = UIColor.white.cgColor
@@ -105,7 +106,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         shareButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 10, 5)
         shareButton.setImage(UIImage(named: "ic_share"), for: .normal)
         shareButton.imageView?.contentMode = .scaleAspectFit
-        shareButton.frame = CGRect(x: view.frame.size.width/2 + 40, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
+        shareButton.frame = CGRect(x: view.frame.size.width/2 + padding, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
         shareButton.addTarget(self, action: #selector(shareFile), for: .touchUpInside)
         shareButton.layer.borderWidth = 2.0
         shareButton.layer.borderColor = UIColor.white.cgColor
@@ -130,38 +131,38 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         var imageName: String = ""
         var videoName: String = ""
-        let item = videosArray[indexSelected]
-        if let video = item.items?.video, let image = item.items?.image {
-            if video.hasSuffix("/video.MOV") {
-                let urls = video.characters.split(separator: "/").map { String($0) }
-                videoName = urls[urls.count - 2] + urls[urls.count - 1]
-            } else {
-                videoName = (video as NSString).lastPathComponent
-            }
-            
-            if image.hasSuffix("/pic.JPG") {
-                let urls = image.characters.split(separator: "/").map { String($0) }
-                imageName = urls[urls.count - 2] + urls[urls.count - 1]
-            } else {
-                imageName = (image as NSString).lastPathComponent
-            }
-            
-            if screenType == .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForDocumentsDirectory(withPath: imageName)) {
-                let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        if let item = videosArray[indexSelected] as? LivePhoto {
+            if let video = item.items?.video, let image = item.items?.image {
+                if video.hasSuffix("/video.MOV") {
+                    let urls = video.characters.split(separator: "/").map { String($0) }
+                    videoName = urls[urls.count - 2] + urls[urls.count - 1]
+                } else {
+                    videoName = (video as NSString).lastPathComponent
+                }
                 
-                let localPath = directoryURL.appendingPathComponent(imageName)
-                let activityViewController = UIActivityViewController(activityItems: [localPath], applicationActivities: nil)
-                activityViewController.popoverPresentationController?.sourceView = shareButton
-                self.present(activityViewController, animated: true, completion: nil)
-            } else if screenType != .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) {
-                let urlImage : URL = NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) as URL
-                let urlVideo : URL = NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) as URL
-                let activityViewController = UIActivityViewController(activityItems: [urlImage,urlVideo], applicationActivities: nil)
-                activityViewController.popoverPresentationController?.sourceView = shareButton
-                self.present(activityViewController, animated: true, completion: nil)
+                if image.hasSuffix("/pic.JPG") {
+                    let urls = image.characters.split(separator: "/").map { String($0) }
+                    imageName = urls[urls.count - 2] + urls[urls.count - 1]
+                } else {
+                    imageName = (image as NSString).lastPathComponent
+                }
+                
+                if screenType == .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForDocumentsDirectory(withPath: imageName)) {
+                    let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                    
+                    let localPath = directoryURL.appendingPathComponent(imageName)
+                    let activityViewController = UIActivityViewController(activityItems: [localPath], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = shareButton
+                    self.present(activityViewController, animated: true, completion: nil)
+                } else if screenType != .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) {
+                    let urlImage : URL = NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) as URL
+                    let urlVideo : URL = NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) as URL
+                    let activityViewController = UIActivityViewController(activityItems: [urlImage,urlVideo], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = shareButton
+                    self.present(activityViewController, animated: true, completion: nil)
+                }
             }
         }
-        
     }
     
     @objc func downloadMovie() {
@@ -169,60 +170,62 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         var imageName: String = ""
         var videoName: String = ""
-        let item = videosArray[indexSelected]
-        if let video = item.items?.video, let image = item.items?.image {
-            if video.hasSuffix("/video.MOV") {
-                let urls = video.characters.split(separator: "/").map { String($0) }
-                videoName = urls[urls.count - 2] + urls[urls.count - 1]
-            } else {
-                videoName = (video as NSString).lastPathComponent
-            }
-            
-            if image.hasSuffix("/pic.JPG") {
-                let urls = image.characters.split(separator: "/").map { String($0) }
-                imageName = urls[urls.count - 2] + urls[urls.count - 1]
-            } else {
-                imageName = (image as NSString).lastPathComponent
-            }
-            
-            if screenType == .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForDocumentsDirectory(withPath: imageName)) {
-                hud = MBProgressHUD(view: view)
-                view.addSubview(hud)
-                hud.mode = .indeterminate
-                hud.labelText = "Saving ..."
-                hud.show(true)
-                PHPhotoLibrary.shared().performChanges({
-                    let request = PHAssetCreationRequest.forAsset()
-                    let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                    
-                    let localPath = directoryURL.appendingPathComponent(imageName)
-                    
-                    request.addResource(with: .photo, fileURL: localPath, options: nil)
-                }) { (success, error) in
-                    DispatchQueue.main.async {
-                        self.hud.hide(true)
-                        //
+        if let item = videosArray[indexSelected] as? LivePhoto {
+            if let video = item.items?.video, let image = item.items?.image {
+                if video.hasSuffix("/video.MOV") {
+                    let urls = video.characters.split(separator: "/").map { String($0) }
+                    videoName = urls[urls.count - 2] + urls[urls.count - 1]
+                } else {
+                    videoName = (video as NSString).lastPathComponent
+                }
+                
+                if image.hasSuffix("/pic.JPG") {
+                    let urls = image.characters.split(separator: "/").map { String($0) }
+                    imageName = urls[urls.count - 2] + urls[urls.count - 1]
+                } else {
+                    imageName = (image as NSString).lastPathComponent
+                }
+                
+                if screenType == .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForDocumentsDirectory(withPath: imageName)) {
+                    hud = MBProgressHUD(view: view)
+                    view.addSubview(hud)
+                    hud.mode = .indeterminate
+                    hud.labelText = "Saving ..."
+                    hud.show(true)
+                    PHPhotoLibrary.shared().performChanges({
+                        let request = PHAssetCreationRequest.forAsset()
+                        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                        
+                        let localPath = directoryURL.appendingPathComponent(imageName)
+                        
+                        request.addResource(with: .photo, fileURL: localPath, options: nil)
+                    }) { (success, error) in
+                        DispatchQueue.main.async {
+                            self.hud.hide(true)
+                            //
+                        }
+                    }
+                } else if screenType != .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) {
+                    hud = MBProgressHUD(view: view)
+                    view.addSubview(hud)
+                    hud.mode = .indeterminate
+                    hud.labelText = "Saving ..."
+                    hud.show(true)
+                    PHPhotoLibrary.shared().performChanges({
+                        let request = PHAssetCreationRequest.forAsset()
+                        request.addResource(with: .photo, fileURL: NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) as URL, options: nil)
+                        request.addResource(with: .pairedVideo, fileURL: NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) as URL, options: nil)
+                    }) { (success, error) in
+                        DispatchQueue.main.async {
+                            self.hud.hide(true)
+                            //
+                        }
                     }
                 }
-            } else if screenType != .BlackWallpaperScreen && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) && FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) {
-                hud = MBProgressHUD(view: view)
-                view.addSubview(hud)
-                hud.mode = .indeterminate
-                hud.labelText = "Saving ..."
-                hud.show(true)
-                PHPhotoLibrary.shared().performChanges({
-                    let request = PHAssetCreationRequest.forAsset()
-                    request.addResource(with: .photo, fileURL: NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: imageName)) as URL, options: nil)
-                    request.addResource(with: .pairedVideo, fileURL: NSURL(fileURLWithPath: FCFileManager.pathForTemporaryDirectory(withPath: videoName)) as URL, options: nil)
-                }) { (success, error) in
-                    DispatchQueue.main.async {
-                        self.hud.hide(true)
-                        //
-                    }
-                }
             }
+        } else if let item = videosArray[indexSelected] as? LivePhoto{
+            
         }
-        
     }
     
     @objc func closeView() {

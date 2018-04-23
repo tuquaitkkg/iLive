@@ -14,7 +14,7 @@ import FCFileManager
 
 class VideoViewController: UIViewController {
     
-    var item: LivePhoto?
+    var item: Any?
     var index = 0
     var hud: MBProgressHUD!
     var screenType: ScreenType = .LiveWallpaperScreen
@@ -27,7 +27,12 @@ class VideoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if let item = item, let video = item.items?.video, let image = item.items?.image {
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let item = item as? LivePhoto, let video = item.items?.video, let image = item.items?.image {
             if screenType == .LiveWallpaperScreen || screenType == .FeaturedScreen {
                 var videoPath: String
                 if video.hasSuffix("/video.MOV") {
@@ -62,80 +67,31 @@ class VideoViewController: UIViewController {
                         })
                     }
                 }
-            } else {
-                AppDelegate().sharedInstance().showLoading(isShow: true)
-                
-                DispatchQueue.global(qos: .default).async {
-                    
-                    // ...Run some task in the background here...
-                    var videoPath: String
-                    if video.hasSuffix("/video.MOV") {
-                        let urls = video.characters.split(separator: "/").map { String($0) }
-                        videoPath = urls[urls.count - 2] + urls[urls.count - 1]
-                    } else {
-                        videoPath = (video as NSString).lastPathComponent
-                    }
-                    
-                    var imagePath: String
-                    if image.hasSuffix("/pic.JPG") {
-                        let urls = image.characters.split(separator: "/").map { String($0) }
-                        imagePath = urls[urls.count - 2] + urls[urls.count - 1]
-                    } else {
-                        imagePath = (image as NSString).lastPathComponent
-                    }
-                    
-                    
-                    if !FCFileManager.isFileItem(atPath: FCFileManager.pathForTemporaryDirectory(withPath: videoPath)) {
-                        let assetIdentifier = NSUUID().uuidString
-                        
-                        let videoURL = NSURL(fileURLWithPath: video)
-                        
-                        self.storeMovieFile(videoUrlString: videoURL.path!, videoName: videoPath, assetIdentifier: assetIdentifier)
-                        
-                        if !self.saving {
-                            
-                            self.storeImageFile(imageUrlString: "", imageName: imagePath, assetIdentifier: assetIdentifier, completion: { (img) in
-                                PHLivePhoto.request(withResourceFileURLs: [URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(videoPath)),URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(imagePath))], placeholderImage: nil, targetSize: img.size, contentMode: .default, resultHandler: { (livePhoto, info) in
-                                    DispatchQueue.main.async {
-                                        AppDelegate().sharedInstance().showLoading(isShow: false)
-                                        
-                                        // ...Run something once we're done with the background task...
-                                        self.livePhotoView.livePhoto = livePhoto
-                                        self.livePhotoView.startPlayback(with: .full)
-                                    }
-                                })
-                                
-                                
-                            })
-                        } else {
-                            DispatchQueue.main.async {
-                                AppDelegate().sharedInstance().showLoading(isShow: false)
-                                
-                                // ...Run something once we're done with the background task...
-                            }
-                        }
-                    } else {
-                        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                        let imageUrl = directoryURL.appendingPathComponent(imagePath)
-                        if let image = UIImage(contentsOfFile: imageUrl.path) {
-                            PHLivePhoto.request(withResourceFileURLs: [URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(videoPath)),URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(imagePath))], placeholderImage: nil, targetSize: image.size, contentMode: .default, resultHandler: { (livePhoto, info) in
-                                DispatchQueue.main.async {
-                                    AppDelegate().sharedInstance().showLoading(isShow: false)
-                                    
-                                    // ...Run something once we're done with the background task...
-                                    self.livePhotoView.livePhoto = livePhoto
-                                    self.livePhotoView.startPlayback(with: .full)
-                                }
-                            })
-                        }
-                        
-                    }
-                    
-                }
-                
-                
             }
-            
+        } else if let item = item as? String{
+            var imagePath: String
+            imagePath = (item as NSString).lastPathComponent
+            var videoPath = imagePath.replacingOccurrences(of: "imagexxx", with: "videoxxx")
+            videoPath = videoPath.replacingOccurrences(of: ".jpg", with: "")
+            let videoName = videoPath + ".mov";
+            if !FCFileManager.isFileItem(atPath: FilePaths.VidToLive.livePath.appending(videoName)) {
+                AppDelegate().sharedInstance().showLoading(isShow: true)
+                if let filePath = Bundle.main.path(forResource: videoPath, ofType: "mov") {
+                    saveFileToDocumentWithPath(url: filePath)
+                }
+            } else {
+                if let image = UIImage(contentsOfFile: FilePaths.VidToLive.livePath.appending(imagePath)) {
+                    PHLivePhoto.request(withResourceFileURLs: [URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(videoName)),URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(imagePath))], placeholderImage: nil, targetSize: image.size, contentMode: .default, resultHandler: { (livePhoto, info) in
+                        DispatchQueue.main.async {
+                            AppDelegate().sharedInstance().showLoading(isShow: false)
+                            
+                            // ...Run something once we're done with the background task...
+                            self.livePhotoView.livePhoto = livePhoto
+                            self.livePhotoView.startPlayback(with: .full)
+                        }
+                    })
+                }
+            }
         }
     }
 
@@ -187,21 +143,16 @@ class VideoViewController: UIViewController {
     
     func saveFileToDocumentWithPath(url: String) {
         let assetIdentifier = NSUUID().uuidString
-        //let docPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString
-        //let cachePath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as NSString
-        var videoName: String
-        if url.hasSuffix("/video.MOV") {
-            let urls = url.characters.split(separator: "/").map { String($0) }
-            videoName = urls[urls.count - 2] + urls[urls.count - 1]
-        } else {
-            videoName = (url as NSString).lastPathComponent
-        }
         
-        //let videoDocPath = cachePath.stringByAppendingPathComponent(videoName)
-        
-        var videoLocalPath: URL?
-        
-        if let item = item, let image = item.items?.image {
+        if let item = item as? LivePhoto, let image = item.items?.image {
+            var videoLocalPath: URL?
+            var videoName: String
+            if url.hasSuffix("/video.MOV") {
+                let urls = url.characters.split(separator: "/").map { String($0) }
+                videoName = urls[urls.count - 2] + urls[urls.count - 1]
+            } else {
+                videoName = (url as NSString).lastPathComponent
+            }
             var imageName: String
             if image.hasSuffix("/pic.JPG") {
                 let urls = image.characters.split(separator: "/").map { String($0) }
@@ -223,7 +174,7 @@ class VideoViewController: UIViewController {
                 .response { response in
                     if let videoLocalPath = videoLocalPath {
                         self.storeMovieFile(videoUrlString: videoLocalPath.path, videoName: videoName, assetIdentifier: assetIdentifier)
-                    }
+                    }	
                     var imageLocalPath: URL?
                     let tmpDirURL = NSURL.fileURL(withPath: NSTemporaryDirectory(),isDirectory: true)
                     let pathComponent = imageName
@@ -250,39 +201,28 @@ class VideoViewController: UIViewController {
                             }
                     }
             }
-            
-//            Alamofire.download(.GET, url, destination: { (tempUrl, response) -> NSURL in
-//                let tmpDirURL = NSURL.fileURLWithPath(NSTemporaryDirectory(),isDirectory: true)
-//                let pathComponent = videoName
-//
-//                videoLocalPath = tmpDirURL.URLByAppendingPathComponent(pathComponent)
-//                return videoLocalPath!
-//            }).response(completionHandler: { (request, response, data, error) in
-//                if let videoLocalPath = videoLocalPath {
-//                    self.storeMovieFile(videoLocalPath.path!, videoName: videoName, assetIdentifier: assetIdentifier)
-//                }
-//                var imageLocalPath: NSURL?
-//                Alamofire.download(.GET, item.image!, destination: { (tempUrl, response) -> NSURL in
-//                    let tmpDirURL = NSURL.fileURLWithPath(NSTemporaryDirectory(),isDirectory: true)
-//                    let pathComponent = imageName
-//
-//                    imageLocalPath = tmpDirURL.URLByAppendingPathComponent(pathComponent)
-//                    return imageLocalPath!
-//                }).response(completionHandler: { (request, response, data, error) in
-//                    self.hud.hide(true)
-//                    if let imageLocalPath = imageLocalPath {
-//                        self.storeImageFile(imageLocalPath.path!, imageName: imageName, assetIdentifier: assetIdentifier, completion: { (img) in
-//                            PHLivePhoto.requestLivePhotoWithResourceFileURLs([NSURL(fileURLWithPath: FilePaths.VidToLive.livePath.stringByAppendingString(videoName)), NSURL(fileURLWithPath: FilePaths.VidToLive.livePath.stringByAppendingString(imageName))], placeholderImage: nil, targetSize: img.size, contentMode: .Default, resultHandler: { (livePhoto, info) in
-//                                self.hud.hide(true)
-//                                self.livePhotoView.livePhoto = livePhoto
-//                                self.livePhotoView.startPlaybackWithStyle(.Full)
-//                            })
-//                        })
-//                    }
-//                })
-//            })
-            
-        } else {
+        } else if let item = item as? String{
+            var imagePath: String
+            imagePath = (item as NSString).lastPathComponent
+            var videoPath = imagePath.replacingOccurrences(of: "imagexxx", with: "videoxxx")
+            videoPath = videoPath.replacingOccurrences(of: ".jpg", with: "")
+            let videoName = videoPath + ".mov";
+            if let filePath = Bundle.main.path(forResource: videoPath, ofType: "mov") {
+                self.storeMovieFile(videoUrlString: filePath, videoName: videoName, assetIdentifier: assetIdentifier)
+            }
+//            if let imageLocalPath = item {
+                self.storeImageFile(imageUrlString: item, imageName: imagePath, assetIdentifier: assetIdentifier, completion: { (img) in
+                    PHLivePhoto.request(withResourceFileURLs: [URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(videoName)),URL.init(fileURLWithPath: FilePaths.VidToLive.livePath.appending(imagePath))], placeholderImage: nil, targetSize: img.size, contentMode: .default, resultHandler: { (livePhoto, info) in
+                        DispatchQueue.main.async {
+                            AppDelegate().sharedInstance().showLoading(isShow: false)
+                            
+                            // ...Run something once we're done with the background task...
+                            self.livePhotoView.livePhoto = livePhoto
+                            self.livePhotoView.startPlayback(with: .full)
+                        }
+                    })
+                })
+//            }
             AppDelegate().sharedInstance().showLoading(isShow: false)
         }
     }
