@@ -62,7 +62,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,13 +75,13 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             cell.textLabel?.text = "Favorite"
         case 2:
             cell.textLabel?.text = "Privacy Policy"
+//        case 3:
+//            cell.textLabel?.text = "Terms of Use"
+//        case 4:
+//            cell.textLabel?.text = "Restore Puchase"
         case 3:
-            cell.textLabel?.text = "Terms of Use"
-        case 4:
-            cell.textLabel?.text = "Restore Puchase"
-        case 5:
             cell.textLabel?.text = "Support"
-        case 6:
+        case 4:
             cell.textLabel?.text = "Share this app"
         default:
             cell.textLabel?.text = ""
@@ -111,11 +111,11 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             navigationController.viewControllers = [termVC]
             frostedViewController.contentViewController = navigationController
             frostedViewController.hideMenuViewController()
+//        case 3:
+//            break
+//        case 4:
+//            break
         case 3:
-            break
-        case 4:
-            break
-        case 5:
             let mailComposeViewController = configuredMailComposeViewController()
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: {
@@ -125,7 +125,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             } else {
                 self.showSendMailErrorAlert()
             }
-        case 6:
+        case 4:
             let url : URL = URL.init(string: "https://itunes.apple.com/us/app/connect-crewlounge/id1355295696?ls=1&mt=8")!
             let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             let cell = tableView.cellForRow(at: indexPath)

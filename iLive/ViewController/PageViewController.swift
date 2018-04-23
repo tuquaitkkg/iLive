@@ -79,7 +79,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         doneButton = UIButton(type: .custom)
         doneButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         doneButton.setImage(UIImage(named: "ic_back"), for: .normal)
-        doneButton.frame = CGRect(x: 20, y: 20, width: 40.0, height: 40.0)
+        doneButton.backgroundColor = UIColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.3)
+        doneButton.frame = CGRect(x: 20, y: 20, width: 50.0, height: 50.0)
         doneButton.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         doneButton.layer.borderWidth = 2.0
         doneButton.layer.borderColor = UIColor.white.cgColor
@@ -90,6 +91,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         downloadButton = UIButton(type: .custom)
         downloadButton.setTitle("Save", for: .normal)
         downloadButton.frame = CGRect(x: (view.frame.size.width - 60)/2, y: view.frame.size.height - 150, width: 60.0, height: 60.0)
+        downloadButton.backgroundColor = UIColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.3)
         downloadButton.addTarget(self, action: #selector(downloadMovie), for: .touchUpInside)
         downloadButton.layer.borderWidth = 2.0
         downloadButton.layer.borderColor = UIColor.white.cgColor
@@ -100,6 +102,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let padding : CGFloat = 80
         settingButton = UIButton(type: .custom)
         settingButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        settingButton.backgroundColor = UIColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.3)
         settingButton.setImage(UIImage(named: "ic_unfavorite"), for: .normal)
         settingButton.setImage(UIImage(named: "ic_favorite"), for: .selected)
         settingButton.imageView?.contentMode = .scaleAspectFit
@@ -127,6 +130,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         shareButton = UIButton(type: .custom)
         shareButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 10, 5)
         shareButton.setImage(UIImage(named: "ic_share"), for: .normal)
+        shareButton.backgroundColor = UIColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.3)
         shareButton.imageView?.contentMode = .scaleAspectFit
         shareButton.frame = CGRect(x: view.frame.size.width/2 + padding, y: view.frame.size.height - 145, width: 50.0, height: 50.0)
         shareButton.addTarget(self, action: #selector(shareFile), for: .touchUpInside)
