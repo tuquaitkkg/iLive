@@ -99,7 +99,8 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallpaperCell", for: indexPath) as! WallpaperCell
-        
+        cell.imageView.image = nil;
+        cell.imageView.sd_cancelCurrentImageLoad()
         if let item = newArray[indexPath.row] as? LivePhoto {
             cell.imageView.sd_setImage(with: NSURL(string: item.items!.image!) as URL?, placeholderImage: nil)
         } else if let item = newArray[indexPath.row] as? String {
