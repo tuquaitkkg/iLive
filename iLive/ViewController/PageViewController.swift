@@ -38,6 +38,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var interstitialAd: GADInterstitial!
     var bannerView : GADBannerView!
     var favoriteFile : NSMutableArray = []
+    var lblDate : UILabel!
+    var lblTime : UILabel!
+    var timer = Timer()
+    let formatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +54,21 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         
         initButtons()
-        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         imagePreview = UIImageView(frame: view.bounds)
         view.addSubview(imagePreview)
+    }
+    
+    // must be internal or public.
+    @objc func update() {
+        // Something cool
+        let date = Date()
+        formatter.dateFormat = "HH:mm"
+        let result = formatter.string(from: date)
+        lblTime.text = result
+        formatter.dateFormat = "EEEE, MMM dd"
+        let result1 = formatter.string(from: date)
+        lblDate.text = result1
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,6 +91,18 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         if (UserDefaults.standard.object(forKey: "favoriteFile") != nil) {
             favoriteFile = NSMutableArray.init(array: UserDefaults.standard.array(forKey: "favoriteFile")!)
         }
+        
+        lblDate = UILabel(frame: CGRect(x: (UIScreen.main.bounds.size.width - 200)/2, y: 130, width: 200, height: 50))
+        lblDate.textAlignment = .center
+        lblDate.textColor = .white
+        lblDate.font = UIFont.systemFont(ofSize: 20)
+        lblDate.tag = 1
+        
+        lblTime = UILabel(frame: CGRect(x: (UIScreen.main.bounds.size.width - 200)/2, y: 50, width: 200, height: 70))
+        lblTime.textAlignment = .center
+        lblTime.textColor = .white
+        lblTime.font = UIFont.systemFont(ofSize: 80.0, weight: .thin)
+        lblTime.tag = 1
         
         doneButton = UIButton(type: .custom)
         doneButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -145,6 +173,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                 button.removeFromSuperview()
             }
         }
+        view.addSubview(lblDate)
+        view.addSubview(lblTime)
         view.addSubview(doneButton)
         view.addSubview(downloadButton)
         view.addSubview(settingButton)
@@ -352,7 +382,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     func createGADBannerView() -> Void {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.adUnitID = Constants.AdNetwork.AdmobBannerTest
+        bannerView.adUnitID = Constants.AdNetwork.AdmobBanner
         bannerView.rootViewController = self
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID, "eeb35843469fcc9d27a343f8b9183e6a","1ea46263048498a00a864fd59a2e47e1"]
@@ -383,7 +413,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func createAndLoadInterstitialAd() -> GADInterstitial {
-        let interstitial = GADInterstitial(adUnitID: Constants.AdNetwork.AdmobInterstitialTest)
+        let interstitial = GADInterstitial(adUnitID: Constants.AdNetwork.AdmobInterstitial)
         interstitial.delegate = self
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID, "eeb35843469fcc9d27a343f8b9183e6a","1ea46263048498a00a864fd59a2e47e1"]

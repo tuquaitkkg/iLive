@@ -126,7 +126,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
                 self.showSendMailErrorAlert()
             }
         case 4:
-            let url : URL = URL.init(string: "https://itunes.apple.com/us/app/connect-crewlounge/id1355295696?ls=1&mt=8")!
+            let url : URL = URL.init(string: "https://itunes.apple.com/us/app/live-wallpaper-for-iphone-hd/id1375255874?ls=1&mt=8")!
             let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             let cell = tableView.cellForRow(at: indexPath)
             activityViewController.popoverPresentationController?.sourceView = cell

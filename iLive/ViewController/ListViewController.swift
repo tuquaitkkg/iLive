@@ -21,7 +21,7 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var bannerView: GADBannerView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerView.adUnitID = Constants.AdNetwork.AdmobBannerTest
+        bannerView.adUnitID = Constants.AdNetwork.AdmobBanner
         bannerView.rootViewController = self
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID, "eeb35843469fcc9d27a343f8b9183e6a","1ea46263048498a00a864fd59a2e47e1"]
