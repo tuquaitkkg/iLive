@@ -17,7 +17,28 @@ class StartViewController: UIViewController, UICollectionViewDataSource, UIColle
 
         // Do any additional setup after loading the view.
         clStart.register(UINib.init(nibName: "StartCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cellStart")
+        clStart.register(UINib.init(nibName: "InAppCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cellInApp")
         pageControl.numberOfPages = 3
+        
+        IAPHandler.shared.fetchAvailableProducts()
+        IAPHandler.shared.purchaseStatusBlock = {[weak self] (type) in
+            guard let strongSelf = self else{ return }
+            if type == .purchased {
+                let alertView = UIAlertController(title: "", message: type.message(), preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
+                    
+                })
+                alertView.addAction(action)
+                strongSelf.present(alertView, animated: true, completion: nil)
+            } else if type == .restored{
+                let alertView = UIAlertController(title: "", message: type.message(), preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
+                    
+                })
+                alertView.addAction(action)
+                strongSelf.present(alertView, animated: true, completion: nil)
+            }
+        }
         
     }
 
@@ -31,12 +52,25 @@ class StartViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellStart", for: indexPath) as! StartCollectionViewCell
-        cell.configCell(indexPath: indexPath)
-        cell.actionHandleBlock {
-            self.scrollToNextCell()
+        if indexPath.row != 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellStart", for: indexPath) as! StartCollectionViewCell
+            cell.configCell(indexPath: indexPath)
+            cell.actionHandleBlock {
+                self.scrollToNextCell()
+            }
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellInApp", for: indexPath) as! InAppCollectionViewCell
+            cell.buyApp {
+                IAPHandler.shared.purchaseMyProduct(index: 0)
+            }
+            cell.restoreApp {
+                IAPHandler.shared.restorePurchase()
+            }
+            return cell
         }
-        return cell
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

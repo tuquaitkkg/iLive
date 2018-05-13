@@ -38,7 +38,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupRootView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let tabbarController = storyboard.instantiateViewController(withIdentifier: "RootViewController")
+        let tabbarController = storyboard.instantiateViewController(withIdentifier: "StartViewController")
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tabbarController
+        window?.makeKeyAndVisible()
+    }
+    
+    func setupMainView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabbarController = storyboard.instantiateViewController(withIdentifier: "RootViewController")
+//        let tabbarController = storyboard.instantiateViewController(withIdentifier: "StartViewController")
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabbarController
         window?.makeKeyAndVisible()

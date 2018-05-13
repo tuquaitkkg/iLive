@@ -23,11 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="306" height="554"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFs-xC-MxO">
-                                <rect key="frame" x="78" y="454" width="150" height="30"/>
+                                <rect key="frame" x="28" y="454" width="250" height="30"/>
                                 <color key="backgroundColor" red="0.10588235294117647" green="0.53725490196078429" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MOL-JS-zW1"/>
-                                    <constraint firstAttribute="width" constant="150" id="jBt-sZ-bki"/>
+                                    <constraint firstAttribute="width" constant="250" id="jBt-sZ-bki"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="NEXT">

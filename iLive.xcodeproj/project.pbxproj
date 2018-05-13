@@ -46,6 +46,8 @@
 		3DBEE1DC20A82BA90016EF41 /* Start_Video_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1D920A82BA90016EF41 /* Start_Video_1.mov */; };
 		3DBEE1DD20A82BA90016EF41 /* Start_Image_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1DA20A82BA90016EF41 /* Start_Image_2.jpg */; };
 		3DBEE1DE20A82BA90016EF41 /* Start_Video_2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1DB20A82BA90016EF41 /* Start_Video_2.mov */; };
+		3DBEE1E120A845A30016EF41 /* InAppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBEE1DF20A845A30016EF41 /* InAppCollectionViewCell.swift */; };
+		3DBEE1E220A845A30016EF41 /* InAppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1E020A845A30016EF41 /* InAppCollectionViewCell.xib */; };
 		3DCFF89B208CCD860034BFC0 /* offline_videoxxx22.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF82D208CCD860034BFC0 /* offline_videoxxx22.mov */; };
 		3DCFF89C208CCD860034BFC0 /* offline_videoxxx36.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF82E208CCD860034BFC0 /* offline_videoxxx36.mov */; };
 		3DCFF89D208CCD860034BFC0 /* offline_videoxxx37.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF82F208CCD860034BFC0 /* offline_videoxxx37.mov */; };
@@ -155,6 +157,8 @@
 		3DCFF905208CCD860034BFC0 /* offline_imagexxx55.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF898208CCD860034BFC0 /* offline_imagexxx55.jpg */; };
 		3DCFF906208CCD860034BFC0 /* offline_imagexxx54.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF899208CCD860034BFC0 /* offline_imagexxx54.jpg */; };
 		3DCFF907208CCD860034BFC0 /* offline_imagexxx40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF89A208CCD860034BFC0 /* offline_imagexxx40.jpg */; };
+		3DE1B19120A8491B007F0212 /* wallpaper_inapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */; };
+		3DE1B19320A8668D007F0212 /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1B19220A8668C007F0212 /* IAPHandler.swift */; };
 		B086CF3AB110B57F12D487A5 /* Pods_iLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C333460C55EE4986C4A6037 /* Pods_iLive.framework */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +207,8 @@
 		3DBEE1D920A82BA90016EF41 /* Start_Video_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Start_Video_1.mov; sourceTree = "<group>"; };
 		3DBEE1DA20A82BA90016EF41 /* Start_Image_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Start_Image_2.jpg; sourceTree = "<group>"; };
 		3DBEE1DB20A82BA90016EF41 /* Start_Video_2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Start_Video_2.mov; sourceTree = "<group>"; };
+		3DBEE1DF20A845A30016EF41 /* InAppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppCollectionViewCell.swift; sourceTree = "<group>"; };
+		3DBEE1E020A845A30016EF41 /* InAppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InAppCollectionViewCell.xib; sourceTree = "<group>"; };
 		3DCFF82D208CCD860034BFC0 /* offline_videoxxx22.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = offline_videoxxx22.mov; sourceTree = "<group>"; };
 		3DCFF82E208CCD860034BFC0 /* offline_videoxxx36.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = offline_videoxxx36.mov; sourceTree = "<group>"; };
 		3DCFF82F208CCD860034BFC0 /* offline_videoxxx37.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = offline_videoxxx37.mov; sourceTree = "<group>"; };
@@ -312,6 +318,8 @@
 		3DCFF898208CCD860034BFC0 /* offline_imagexxx55.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = offline_imagexxx55.jpg; sourceTree = "<group>"; };
 		3DCFF899208CCD860034BFC0 /* offline_imagexxx54.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = offline_imagexxx54.jpg; sourceTree = "<group>"; };
 		3DCFF89A208CCD860034BFC0 /* offline_imagexxx40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = offline_imagexxx40.jpg; sourceTree = "<group>"; };
+		3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper_inapp.png; sourceTree = "<group>"; };
+		3DE1B19220A8668C007F0212 /* IAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
 		5C333460C55EE4986C4A6037 /* Pods_iLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7358F63D9A26EE636EEC9617 /* Pods-iLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.debug.xcconfig"; sourceTree = "<group>"; };
 		E9775801BCF4E5CEB593066E /* Pods-iLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.release.xcconfig"; sourceTree = "<group>"; };
@@ -409,6 +417,8 @@
 		3D286E7420693CC800298FA7 /* iLive */ = {
 			isa = PBXGroup;
 			children = (
+				3DE1B19220A8668C007F0212 /* IAPHandler.swift */,
+				3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */,
 				3DBEE1CE20A82B420016EF41 /* StartFolder */,
 				3DCFF82B208CCD860034BFC0 /* Image_Offline */,
 				3D2339182079F33F005CD10D /* Services */,
@@ -425,6 +435,8 @@
 				3D23391B207A3E89005CD10D /* policy.txt */,
 				3DBEE1CA20A7EE140016EF41 /* StartCollectionViewCell.swift */,
 				3DBEE1CB20A7EE140016EF41 /* StartCollectionViewCell.xib */,
+				3DBEE1DF20A845A30016EF41 /* InAppCollectionViewCell.swift */,
+				3DBEE1E020A845A30016EF41 /* InAppCollectionViewCell.xib */,
 			);
 			path = iLive;
 			sourceTree = "<group>";
@@ -703,6 +715,7 @@
 				3DCFF8F5208CCD860034BFC0 /* offline_imagexxx22.jpg in Resources */,
 				3DCFF8FF208CCD860034BFC0 /* offline_imagexxx47.jpg in Resources */,
 				3DCFF8FC208CCD860034BFC0 /* offline_imagexxx51.jpg in Resources */,
+				3DE1B19120A8491B007F0212 /* wallpaper_inapp.png in Resources */,
 				3DCFF8A9208CCD860034BFC0 /* offline_videoxxx27.mov in Resources */,
 				3DCFF8C7208CCD860034BFC0 /* offline_videoxxx16.mov in Resources */,
 				3DCFF8E4208CCD860034BFC0 /* offline_imagexxx17.jpg in Resources */,
@@ -746,6 +759,7 @@
 				3DCFF8AA208CCD860034BFC0 /* offline_videoxxx33.mov in Resources */,
 				3DCFF903208CCD860034BFC0 /* offline_imagexxx43.jpg in Resources */,
 				3DCFF8C3208CCD860034BFC0 /* offline_videoxxx49.mov in Resources */,
+				3DBEE1E220A845A30016EF41 /* InAppCollectionViewCell.xib in Resources */,
 				3DCFF8F0208CCD860034BFC0 /* offline_imagexxx31.jpg in Resources */,
 				3DCFF8BE208CCD860034BFC0 /* offline_videoxxx50.mov in Resources */,
 				3DCFF8C4208CCD860034BFC0 /* offline_videoxxx8.mov in Resources */,
@@ -866,7 +880,9 @@
 				3D286E7820693CC800298FA7 /* RootViewController.swift in Sources */,
 				3DBEE1CC20A7EE140016EF41 /* StartCollectionViewCell.swift in Sources */,
 				3D7971C8206954B600876825 /* MenuViewController.swift in Sources */,
+				3DE1B19320A8668D007F0212 /* IAPHandler.swift in Sources */,
 				3D2198C62074D6E500F6C632 /* FeaturedCell.swift in Sources */,
+				3DBEE1E120A845A30016EF41 /* InAppCollectionViewCell.swift in Sources */,
 				3D2963C420786F68003FB61E /* VideoViewController.swift in Sources */,
 				3D2198C02074944800F6C632 /* BaseViewController.swift in Sources */,
 				3D9B07152071E09B007F119C /* Post.swift in Sources */,

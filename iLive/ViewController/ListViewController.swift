@@ -55,6 +55,11 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
         if titleCategory == "New" {
             let files = Bundle.main.paths(forResourcesOfType: "jpg", inDirectory: nil)
             newArray.addObjects(from: files);
+            for fileName in newArray {
+                if (fileName as! String).contains("Start") {
+                    newArray.remove(fileName)
+                }
+            }
             newArray.addObjects(from: DataStore.sharedInstance.categoryList[0].livePhotos!);
         } else {
             if (UserDefaults.standard.object(forKey: "favoriteFile") != nil) {
