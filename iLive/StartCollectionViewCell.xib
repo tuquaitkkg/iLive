@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellStart" id="gTV-IL-0wX" customClass="StartCollectionViewCell" customModule="iLive" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="306" height="554"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="306" height="554"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wHC-gw-Nrr" customClass="PHLivePhotoView">
+                        <rect key="frame" x="0.0" y="0.0" width="306" height="554"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFs-xC-MxO">
+                                <rect key="frame" x="78" y="454" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.10588235294117647" green="0.53725490196078429" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MOL-JS-zW1"/>
+                                    <constraint firstAttribute="width" constant="150" id="jBt-sZ-bki"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickToButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="qDh-AS-cUI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch7-f7-zBF">
+                                <rect key="frame" x="20" y="40" width="266" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.79020891900000001" blue="0.1396309282" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ch7-f7-zBF" secondAttribute="trailing" constant="20" id="2Ea-dL-BM6"/>
+                            <constraint firstAttribute="bottom" secondItem="QFs-xC-MxO" secondAttribute="bottom" constant="70" id="9kZ-22-KIt"/>
+                            <constraint firstItem="ch7-f7-zBF" firstAttribute="leading" secondItem="wHC-gw-Nrr" secondAttribute="leading" constant="20" id="WdD-YJ-wd9"/>
+                            <constraint firstItem="QFs-xC-MxO" firstAttribute="centerX" secondItem="wHC-gw-Nrr" secondAttribute="centerX" id="cZf-ak-kfU"/>
+                            <constraint firstItem="ch7-f7-zBF" firstAttribute="top" secondItem="wHC-gw-Nrr" secondAttribute="top" constant="40" id="qsF-tM-EIi"/>
+                            <constraint firstItem="QFs-xC-MxO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ch7-f7-zBF" secondAttribute="bottom" id="ykX-0s-Uo8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="wHC-gw-Nrr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6wA-sE-e0g"/>
+                <constraint firstItem="wHC-gw-Nrr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cRN-Tx-kUH"/>
+                <constraint firstAttribute="bottom" secondItem="wHC-gw-Nrr" secondAttribute="bottom" id="oO7-BD-Tqj"/>
+                <constraint firstAttribute="trailing" secondItem="wHC-gw-Nrr" secondAttribute="trailing" id="yMK-Z8-OGK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="306" height="554"/>
+            <connections>
+                <outlet property="btnNext" destination="QFs-xC-MxO" id="qIV-Ay-4ph"/>
+                <outlet property="lblTitle" destination="ch7-f7-zBF" id="mFc-SO-SeL"/>
+                <outlet property="liveView" destination="wHC-gw-Nrr" id="SVB-7J-lCd"/>
+            </connections>
+            <point key="canvasLocation" x="160" y="323"/>
+        </collectionViewCell>
+    </objects>
+</document>

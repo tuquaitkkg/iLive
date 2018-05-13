@@ -39,6 +39,13 @@
 		3DAF44C22078B6740033895F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF44C12078B6740033895F /* PageViewController.swift */; };
 		3DAF44C52078BFDC0033895F /* JPEG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF44C32078BFDC0033895F /* JPEG.swift */; };
 		3DAF44C62078BFDC0033895F /* QuickTimeMov.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF44C42078BFDC0033895F /* QuickTimeMov.swift */; };
+		3DBEE1C920A7DF8E0016EF41 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBEE1C820A7DF8E0016EF41 /* StartViewController.swift */; };
+		3DBEE1CC20A7EE140016EF41 /* StartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBEE1CA20A7EE140016EF41 /* StartCollectionViewCell.swift */; };
+		3DBEE1CD20A7EE140016EF41 /* StartCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1CB20A7EE140016EF41 /* StartCollectionViewCell.xib */; };
+		3DBEE1D820A82B930016EF41 /* Start_Image_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1D720A82B920016EF41 /* Start_Image_1.jpg */; };
+		3DBEE1DC20A82BA90016EF41 /* Start_Video_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1D920A82BA90016EF41 /* Start_Video_1.mov */; };
+		3DBEE1DD20A82BA90016EF41 /* Start_Image_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1DA20A82BA90016EF41 /* Start_Image_2.jpg */; };
+		3DBEE1DE20A82BA90016EF41 /* Start_Video_2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DBEE1DB20A82BA90016EF41 /* Start_Video_2.mov */; };
 		3DCFF89B208CCD860034BFC0 /* offline_videoxxx22.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF82D208CCD860034BFC0 /* offline_videoxxx22.mov */; };
 		3DCFF89C208CCD860034BFC0 /* offline_videoxxx36.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF82E208CCD860034BFC0 /* offline_videoxxx36.mov */; };
 		3DCFF89D208CCD860034BFC0 /* offline_videoxxx37.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF82F208CCD860034BFC0 /* offline_videoxxx37.mov */; };
@@ -189,6 +196,13 @@
 		3DAF44C12078B6740033895F /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		3DAF44C32078BFDC0033895F /* JPEG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEG.swift; sourceTree = "<group>"; };
 		3DAF44C42078BFDC0033895F /* QuickTimeMov.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickTimeMov.swift; sourceTree = "<group>"; };
+		3DBEE1C820A7DF8E0016EF41 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		3DBEE1CA20A7EE140016EF41 /* StartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCollectionViewCell.swift; sourceTree = "<group>"; };
+		3DBEE1CB20A7EE140016EF41 /* StartCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartCollectionViewCell.xib; sourceTree = "<group>"; };
+		3DBEE1D720A82B920016EF41 /* Start_Image_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Start_Image_1.jpg; sourceTree = "<group>"; };
+		3DBEE1D920A82BA90016EF41 /* Start_Video_1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Start_Video_1.mov; sourceTree = "<group>"; };
+		3DBEE1DA20A82BA90016EF41 /* Start_Image_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Start_Image_2.jpg; sourceTree = "<group>"; };
+		3DBEE1DB20A82BA90016EF41 /* Start_Video_2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Start_Video_2.mov; sourceTree = "<group>"; };
 		3DCFF82D208CCD860034BFC0 /* offline_videoxxx22.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = offline_videoxxx22.mov; sourceTree = "<group>"; };
 		3DCFF82E208CCD860034BFC0 /* offline_videoxxx36.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = offline_videoxxx36.mov; sourceTree = "<group>"; };
 		3DCFF82F208CCD860034BFC0 /* offline_videoxxx37.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = offline_videoxxx37.mov; sourceTree = "<group>"; };
@@ -356,6 +370,7 @@
 				3D2963C320786F68003FB61E /* VideoViewController.swift */,
 				3DAF44C12078B6740033895F /* PageViewController.swift */,
 				3D23391D207A3F4D005CD10D /* TermsViewController.swift */,
+				3DBEE1C820A7DF8E0016EF41 /* StartViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -394,6 +409,7 @@
 		3D286E7420693CC800298FA7 /* iLive */ = {
 			isa = PBXGroup;
 			children = (
+				3DBEE1CE20A82B420016EF41 /* StartFolder */,
 				3DCFF82B208CCD860034BFC0 /* Image_Offline */,
 				3D2339182079F33F005CD10D /* Services */,
 				3D2339172079F2F3005CD10D /* ViewController */,
@@ -407,6 +423,8 @@
 				3D286E8120693CC800298FA7 /* Info.plist */,
 				3D1E299D206941CE00DF7433 /* iLive-Bridging-Header.h */,
 				3D23391B207A3E89005CD10D /* policy.txt */,
+				3DBEE1CA20A7EE140016EF41 /* StartCollectionViewCell.swift */,
+				3DBEE1CB20A7EE140016EF41 /* StartCollectionViewCell.xib */,
 			);
 			path = iLive;
 			sourceTree = "<group>";
@@ -422,6 +440,17 @@
 				3D9B070F2071E09B007F119C /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3DBEE1CE20A82B420016EF41 /* StartFolder */ = {
+			isa = PBXGroup;
+			children = (
+				3DBEE1DA20A82BA90016EF41 /* Start_Image_2.jpg */,
+				3DBEE1D920A82BA90016EF41 /* Start_Video_1.mov */,
+				3DBEE1DB20A82BA90016EF41 /* Start_Video_2.mov */,
+				3DBEE1D720A82B920016EF41 /* Start_Image_1.jpg */,
+			);
+			path = StartFolder;
 			sourceTree = "<group>";
 		};
 		3DCFF82B208CCD860034BFC0 /* Image_Offline */ = {
@@ -637,6 +666,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBEE1DD20A82BA90016EF41 /* Start_Image_2.jpg in Resources */,
 				3DCFF8EC208CCD860034BFC0 /* offline_imagexxx24.jpg in Resources */,
 				3DCFF89C208CCD860034BFC0 /* offline_videoxxx36.mov in Resources */,
 				3DCFF8DF208CCD860034BFC0 /* offline_imagexxx14.jpg in Resources */,
@@ -685,6 +715,7 @@
 				3DCFF8E2208CCD860034BFC0 /* offline_imagexxx15.jpg in Resources */,
 				3DCFF8FA208CCD860034BFC0 /* offline_imagexxx44.jpg in Resources */,
 				3DCFF8ED208CCD860034BFC0 /* offline_imagexxx18.jpg in Resources */,
+				3DBEE1D820A82B930016EF41 /* Start_Image_1.jpg in Resources */,
 				3DCFF8AC208CCD860034BFC0 /* offline_videoxxx26.mov in Resources */,
 				3DCFF906208CCD860034BFC0 /* offline_imagexxx54.jpg in Resources */,
 				3DCFF8BF208CCD860034BFC0 /* offline_videoxxx1.mov in Resources */,
@@ -697,6 +728,7 @@
 				3DCFF8DE208CCD860034BFC0 /* offline_imagexxx28.jpg in Resources */,
 				3DCFF8D7208CCD860034BFC0 /* offline_imagexxx13.jpg in Resources */,
 				3D23391C207A3E89005CD10D /* policy.txt in Resources */,
+				3DBEE1DC20A82BA90016EF41 /* Start_Video_1.mov in Resources */,
 				3DCFF8C8208CCD860034BFC0 /* offline_videoxxx28.mov in Resources */,
 				3DCFF8DD208CCD860034BFC0 /* offline_imagexxx10.jpg in Resources */,
 				3DCFF8DC208CCD860034BFC0 /* offline_imagexxx38.jpg in Resources */,
@@ -742,7 +774,9 @@
 				3DCFF8A4208CCD860034BFC0 /* offline_videoxxx24.mov in Resources */,
 				3DCFF8A6208CCD860034BFC0 /* offline_videoxxx19.mov in Resources */,
 				3DCFF8F2208CCD860034BFC0 /* offline_imagexxx21.jpg in Resources */,
+				3DBEE1CD20A7EE140016EF41 /* StartCollectionViewCell.xib in Resources */,
 				3DCFF8FD208CCD860034BFC0 /* offline_imagexxx45.jpg in Resources */,
+				3DBEE1DE20A82BA90016EF41 /* Start_Video_2.mov in Resources */,
 				3DCFF8B2208CCD860034BFC0 /* offline_videoxxx40.mov in Resources */,
 				3DCFF8C9208CCD860034BFC0 /* offline_videoxxx14.mov in Resources */,
 				3DCFF8F4208CCD860034BFC0 /* offline_imagexxx34.jpg in Resources */,
@@ -830,6 +864,7 @@
 				3D9B07112071E09B007F119C /* Featured.swift in Sources */,
 				3D2198BE20748BFE00F6C632 /* LoadingViewController.swift in Sources */,
 				3D286E7820693CC800298FA7 /* RootViewController.swift in Sources */,
+				3DBEE1CC20A7EE140016EF41 /* StartCollectionViewCell.swift in Sources */,
 				3D7971C8206954B600876825 /* MenuViewController.swift in Sources */,
 				3D2198C62074D6E500F6C632 /* FeaturedCell.swift in Sources */,
 				3D2963C420786F68003FB61E /* VideoViewController.swift in Sources */,
@@ -847,6 +882,7 @@
 				3D676353207126030041D8CD /* Utils.swift in Sources */,
 				3D9B07102071E09B007F119C /* BlackWallpaper.swift in Sources */,
 				3DAF44C52078BFDC0033895F /* JPEG.swift in Sources */,
+				3DBEE1C920A7DF8E0016EF41 /* StartViewController.swift in Sources */,
 				3D1E299C2069416200DF7433 /* MBProgressHUD.m in Sources */,
 				3D286E7620693CC800298FA7 /* AppDelegate.swift in Sources */,
 				3D2198BC207478F100F6C632 /* ListViewController.swift in Sources */,
