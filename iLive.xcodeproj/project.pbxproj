@@ -159,6 +159,7 @@
 		3DCFF907208CCD860034BFC0 /* offline_imagexxx40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF89A208CCD860034BFC0 /* offline_imagexxx40.jpg */; };
 		3DE1B19120A8491B007F0212 /* wallpaper_inapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */; };
 		3DE1B19320A8668D007F0212 /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1B19220A8668C007F0212 /* IAPHandler.swift */; };
+		3DE1B19520A89533007F0212 /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1B19420A89533007F0212 /* InAppViewController.swift */; };
 		B086CF3AB110B57F12D487A5 /* Pods_iLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C333460C55EE4986C4A6037 /* Pods_iLive.framework */; };
 /* End PBXBuildFile section */
 
@@ -320,6 +321,7 @@
 		3DCFF89A208CCD860034BFC0 /* offline_imagexxx40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = offline_imagexxx40.jpg; sourceTree = "<group>"; };
 		3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper_inapp.png; sourceTree = "<group>"; };
 		3DE1B19220A8668C007F0212 /* IAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
+		3DE1B19420A89533007F0212 /* InAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		5C333460C55EE4986C4A6037 /* Pods_iLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7358F63D9A26EE636EEC9617 /* Pods-iLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.debug.xcconfig"; sourceTree = "<group>"; };
 		E9775801BCF4E5CEB593066E /* Pods-iLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.release.xcconfig"; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				3DBEE1CB20A7EE140016EF41 /* StartCollectionViewCell.xib */,
 				3DBEE1DF20A845A30016EF41 /* InAppCollectionViewCell.swift */,
 				3DBEE1E020A845A30016EF41 /* InAppCollectionViewCell.xib */,
+				3DE1B19420A89533007F0212 /* InAppViewController.swift */,
 			);
 			path = iLive;
 			sourceTree = "<group>";
@@ -879,6 +882,7 @@
 				3D2198BE20748BFE00F6C632 /* LoadingViewController.swift in Sources */,
 				3D286E7820693CC800298FA7 /* RootViewController.swift in Sources */,
 				3DBEE1CC20A7EE140016EF41 /* StartCollectionViewCell.swift in Sources */,
+				3DE1B19520A89533007F0212 /* InAppViewController.swift in Sources */,
 				3D7971C8206954B600876825 /* MenuViewController.swift in Sources */,
 				3DE1B19320A8668D007F0212 /* IAPHandler.swift in Sources */,
 				3D2198C62074D6E500F6C632 /* FeaturedCell.swift in Sources */,

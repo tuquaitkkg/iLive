@@ -21,7 +21,7 @@ enum ScreenType {
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, GADInterstitialDelegate {
     
     
-    
+    var checkInApp = 0
     var indexSelected = 0
     var countClick = 0
     var videosArray : NSMutableArray = []
@@ -367,6 +367,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             let videoVC = viewControllers?.last as! VideoViewController
             indexSelected = videoVC.index;
             initButtons()
+            checkInApp += 1
+            if checkInApp % 3 == 0 && checkInApp > 0 {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabbarController = storyboard.instantiateViewController(withIdentifier: "InAppViewController")
+                self.present(tabbarController, animated: true, completion: nil)
+            }
         } else {
             initButtons()
         }
