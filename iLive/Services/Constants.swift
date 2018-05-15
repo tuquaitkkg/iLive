@@ -23,6 +23,7 @@ struct Constants {
         return screenRect.size.width
     }
     
+    static let InAppPurchaseComplete = "InAppPurchaseComplete"
     static let PhoneColumns: CGFloat = 3.0
     static let PadColumns: CGFloat = 5.0
     

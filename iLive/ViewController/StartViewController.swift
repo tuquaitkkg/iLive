@@ -26,7 +26,9 @@ class StartViewController: UIViewController, UICollectionViewDataSource, UIColle
             if type == .purchased {
                 let alertView = UIAlertController(title: "", message: type.message(), preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
-                    
+                    UserDefaults.standard.set(true, forKey: Constants.InAppPurchaseComplete)
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.setupMainView()
                 })
                 alertView.addAction(action)
                 strongSelf.present(alertView, animated: true, completion: nil)
@@ -65,7 +67,7 @@ class StartViewController: UIViewController, UICollectionViewDataSource, UIColle
                 IAPHandler.shared.purchaseMyProduct(index: 0)
             }
             cell.restoreApp {
-                IAPHandler.shared.restorePurchase()
+                UIApplication.shared.openURL(URL.init(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")!)
             }
             return cell
         }

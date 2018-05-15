@@ -27,7 +27,8 @@ class IAPHandler: NSObject {
     static let shared = IAPHandler()
     
     let CONSUMABLE_PURCHASE_PRODUCT_ID = "livewallpaper.purchase"
-    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID = "non.consumable"
+    let NON_CONSUMABLE_PURCHASE_PRODUCT_ID = "testpurchase"
+    let AUTO_RENEW_PURCHASE_PRODUCT_ID = "com.tienhoang.cleanbackup.wallpaper"
     
     fileprivate var productID = ""
     fileprivate var productsRequest = SKProductsRequest()
@@ -63,9 +64,9 @@ class IAPHandler: NSObject {
     
     // MARK: - FETCH AVAILABLE IAP PRODUCTS
     func fetchAvailableProducts(){
-        
+        productsRequest.cancel()
         // Put here your IAP Products ID's
-        let productIdentifiers = NSSet(objects: CONSUMABLE_PURCHASE_PRODUCT_ID,NON_CONSUMABLE_PURCHASE_PRODUCT_ID
+        let productIdentifiers = NSSet(objects: AUTO_RENEW_PURCHASE_PRODUCT_ID
         )
         
         productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers as! Set<String>)

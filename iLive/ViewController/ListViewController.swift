@@ -18,6 +18,7 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
     var counter = 0
     var purchased = false
 
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     @IBOutlet weak var bannerView: GADBannerView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,12 +81,11 @@ class ListViewController: BaseViewController, UICollectionViewDelegate, UICollec
             }
         }
         self.clListWallpaper.reloadData()
-//        purchased = UserDefaults.standardUserDefaults().boolForKey(WallpaperProduct.AllWallpapers)
-//        if purchased {
-//            bannerHeight.constant = 0
-//        } else {
-//            bannerHeight.constant = 50
-//        }
+        if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+            bannerHeight.constant = 50
+        } else {
+            bannerHeight.constant = 0
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

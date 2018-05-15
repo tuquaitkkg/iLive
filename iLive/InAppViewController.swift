@@ -58,7 +58,8 @@ class InAppViewController: UIViewController {
             if type == .purchased {
                 let alertView = UIAlertController(title: "", message: type.message(), preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
-                    
+                    UserDefaults.standard.set(true, forKey: Constants.InAppPurchaseComplete)
+                    self?.dismiss(animated: true, completion: nil)
                 })
                 alertView.addAction(action)
                 strongSelf.present(alertView, animated: true, completion: nil)

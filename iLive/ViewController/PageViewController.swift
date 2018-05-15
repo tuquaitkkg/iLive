@@ -45,7 +45,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interstitialAd = createAndLoadInterstitialAd()
+        if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+            interstitialAd = createAndLoadInterstitialAd()
+        }
         // Do any additional setup after loading the view.
         let initialViewController = viewControllerAtIndex(index: indexSelected)
         initialViewController.screenType = screenType
@@ -74,7 +76,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isStatusBarHidden = true
-        createGADBannerView()
+        if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+            createGADBannerView()
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -368,11 +373,14 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             indexSelected = videoVC.index;
             initButtons()
             checkInApp += 1
-            if checkInApp % 3 == 0 && checkInApp > 0 {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabbarController = storyboard.instantiateViewController(withIdentifier: "InAppViewController")
-                self.present(tabbarController, animated: true, completion: nil)
+            if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+                if checkInApp % 3 == 0 && checkInApp > 0 {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let tabbarController = storyboard.instantiateViewController(withIdentifier: "InAppViewController")
+                    self.present(tabbarController, animated: true, completion: nil)
+                }
             }
+            
         } else {
             initButtons()
         }
@@ -428,14 +436,18 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
-        interstitialAd = createAndLoadInterstitialAd()
+        if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+            interstitialAd = createAndLoadInterstitialAd()
+        }
     }
     
     func interstitialDidReceiveAd(_ ad: GADInterstitial)  {
         print("Ad Received")
-        if ad.isReady {
-            if countClick % 3 == 0 {
-                interstitialAd.present(fromRootViewController: self)
+        if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+            if ad.isReady {
+                if countClick % 3 == 0 {
+                    interstitialAd.present(fromRootViewController: self)
+                }
             }
         }
     }

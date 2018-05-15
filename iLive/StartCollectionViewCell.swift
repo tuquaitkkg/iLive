@@ -22,6 +22,9 @@ class StartCollectionViewCell: UICollectionViewCell, PHLivePhotoViewDelegate {
         liveView.isMuted = true
         liveView.bringSubview(toFront: lblTitle)
         liveView.bringSubview(toFront: btnNext)
+        
+        btnNext.layer.masksToBounds = true
+        btnNext.layer.cornerRadius = btnNext.bounds.size.height/2
     }
     
     func configCell(indexPath : IndexPath) -> Void {

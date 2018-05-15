@@ -22,7 +22,12 @@ class LoadingViewController: BaseViewController {
                 DataStore.sharedInstance.categoryList = photos
 //                self?.downloadFeatured(completionHandle: {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
                     appDelegate.setupRootView()
+                } else {
+                    appDelegate.setupMainView()
+                }
+                
 //                })
 
             case .Failure(_):

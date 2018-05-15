@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -338,6 +337,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mjt-YA-Jyn"/>
                     <connections>
+                        <outlet property="bannerHeight" destination="Y9k-NG-msb" id="gWh-1m-nLv"/>
                         <outlet property="bannerView" destination="DF1-LS-FjV" id="MpV-JM-UXU"/>
                         <outlet property="clListWallpaper" destination="VV4-Rv-GtT" id="3rm-6n-nLh"/>
                     </connections>
