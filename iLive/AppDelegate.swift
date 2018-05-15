@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loadingVC = storyboard.instantiateViewController(withIdentifier: "LoadingViewController")
         window?.rootViewController = loadingVC
         window?.makeKeyAndVisible()
+        
+        setupIAP()
         return true
     }
     
@@ -87,6 +89,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             loadingNotification?.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.7)
         } else {
             MBProgressHUD.hideAllHUDs(for: window, animated: true)
+        }
+    }
+    
+    func setupIAP() {
+        
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    let downloads = purchase.transaction.downloads
+                    if !downloads.isEmpty {
+                        SwiftyStoreKit.start(downloads)
+                    } else if purchase.needsFinishTransaction {
+                        // Deliver content from server, then:
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                    print("\(purchase.transaction.transactionState.debugDescription): \(purchase.productId)")
+                case .failed, .purchasing, .deferred:
+                    break // do nothing
+                }
+            }
+        }
+        
+        SwiftyStoreKit.updatedDownloadsHandler = { downloads in
+            
+            // contentURL is not nil if downloadState == .finished
+            let contentURLs = downloads.flatMap { $0.contentURL }
+            if contentURLs.count == downloads.count {
+                print("Saving: \(contentURLs)")
+                SwiftyStoreKit.finishTransaction(downloads[0].transaction)
+            }
         }
     }
 

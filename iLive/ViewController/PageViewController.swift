@@ -78,6 +78,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         UIApplication.shared.isStatusBarHidden = true
         if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
             createGADBannerView()
+        } else {
+            if (bannerView != nil) {
+                bannerView.removeFromSuperview()
+                bannerView = nil;
+            }
         }
         
     }
