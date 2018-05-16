@@ -62,7 +62,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,11 +77,11 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             cell.textLabel?.text = "Privacy Policy"
         case 3:
             cell.textLabel?.text = "Terms of Use"
-//        case 4:
-//            cell.textLabel?.text = "Restore Puchase"
         case 4:
-            cell.textLabel?.text = "Support"
+            cell.textLabel?.text = "Restore Puchase"
         case 5:
+            cell.textLabel?.text = "Support"
+        case 6:
             cell.textLabel?.text = "Share this app"
         default:
             cell.textLabel?.text = ""
@@ -119,9 +119,10 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             frostedViewController.contentViewController = navigationController
             frostedViewController.hideMenuViewController()
             break
-//        case 4:
-//            break
         case 4:
+            self.restorePurchases()
+            break
+        case 5:
             let mailComposeViewController = configuredMailComposeViewController()
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: {
@@ -131,7 +132,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             } else {
                 self.showSendMailErrorAlert()
             }
-        case 5:
+        case 6:
             let url : URL = URL.init(string: "https://itunes.apple.com/us/app/live-wallpaper-for-iphone-hd/id1375255874?ls=1&mt=8")!
             let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             let cell = tableView.cellForRow(at: indexPath)
@@ -172,5 +173,53 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func restorePurchases() {
+        
+        NetworkActivityIndicatorManager.networkOperationStarted()
+        SwiftyStoreKit.restorePurchases(atomically: true) { results in
+            NetworkActivityIndicatorManager.networkOperationFinished()
+            
+            for purchase in results.restoredPurchases {
+                let downloads = purchase.transaction.downloads
+                if !downloads.isEmpty {
+                    SwiftyStoreKit.start(downloads)
+                } else if purchase.needsFinishTransaction {
+                    // Deliver content from server, then:
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
+                }
+            }
+            self.showAlert(self.alertForRestorePurchases(results))
+        }
+    }
+    
+    func showAlert(_ alert: UIAlertController) {
+        guard self.presentedViewController != nil else {
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+    }
+    
+    func alertWithTitle(_ title: String, message: String) -> UIAlertController {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return alert
+    }
+    
+    func alertForRestorePurchases(_ results: RestoreResults) -> UIAlertController {
+        
+        if results.restoreFailedPurchases.count > 0 {
+            print("Restore Failed: \(results.restoreFailedPurchases)")
+            return alertWithTitle("Restore failed", message: "Unknown error. Please contact support")
+        } else if results.restoredPurchases.count > 0 {
+            print("Restore Success: \(results.restoredPurchases)")
+            UserDefaults.standard.set(false, forKey: Constants.InAppPurchaseComplete)
+            return alertWithTitle("Purchases Restored", message: "All purchases have been restored")
+        } else {
+            print("Nothing to Restore")
+            return alertWithTitle("Nothing to restore", message: "No previous purchases were found")
+        }
     }
 }

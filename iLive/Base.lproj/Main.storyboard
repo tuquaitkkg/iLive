@@ -93,7 +93,7 @@
                                 </connections>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Aba-rn-wrj">
-                                <rect key="frame" x="20" y="957" width="728" height="37"/>
+                                <rect key="frame" x="20" y="947" width="728" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="vUB-8l-fmZ"/>
                                 </constraints>
@@ -104,7 +104,7 @@
                             <constraint firstAttribute="trailing" secondItem="vYd-2g-eq0" secondAttribute="trailing" id="8AT-gB-i7H"/>
                             <constraint firstItem="Aba-rn-wrj" firstAttribute="leading" secondItem="DXZ-0X-CUp" secondAttribute="leading" constant="20" id="A6L-Zv-ln5"/>
                             <constraint firstItem="Aba-rn-wrj" firstAttribute="centerX" secondItem="DXZ-0X-CUp" secondAttribute="centerX" id="AiX-cR-7Rd"/>
-                            <constraint firstAttribute="bottom" secondItem="Aba-rn-wrj" secondAttribute="bottom" constant="30" id="DT2-cD-cca"/>
+                            <constraint firstAttribute="bottom" secondItem="Aba-rn-wrj" secondAttribute="bottom" constant="40" id="DT2-cD-cca"/>
                             <constraint firstItem="vYd-2g-eq0" firstAttribute="top" secondItem="DXZ-0X-CUp" secondAttribute="top" id="DYK-sd-h20"/>
                             <constraint firstAttribute="bottom" secondItem="vYd-2g-eq0" secondAttribute="bottom" id="a4K-dt-Gpr"/>
                             <constraint firstItem="vYd-2g-eq0" firstAttribute="leading" secondItem="DXZ-0X-CUp" secondAttribute="leading" id="oab-8A-C0t"/>
@@ -152,7 +152,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock All Features Live Wallpapers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7E-XR-4Kf">
-                                        <rect key="frame" x="8" y="742.5" width="752" height="21.5"/>
+                                        <rect key="frame" x="8" y="662.5" width="752" height="21.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0D-uc-31M">
-                                        <rect key="frame" x="134" y="794" width="500" height="60"/>
+                                        <rect key="frame" x="134" y="714" width="500" height="60"/>
                                         <color key="backgroundColor" red="0.1058823529" green="0.53725490200000003" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="IeA-EE-ixX">
@@ -202,7 +202,9 @@
                                     <constraint firstItem="q7E-XR-4Kf" firstAttribute="centerX" secondItem="O0D-uc-31M" secondAttribute="centerX" id="sGK-HY-vG4"/>
                                     <constraint firstItem="2Nw-o0-tg8" firstAttribute="leading" secondItem="Gjr-pa-cRA" secondAttribute="leading" id="snI-Vv-Jqw"/>
                                     <constraint firstItem="O0D-uc-31M" firstAttribute="centerX" secondItem="Gjr-pa-cRA" secondAttribute="centerX" id="tyV-x0-Xx9"/>
-                                    <constraint firstItem="2Nw-o0-tg8" firstAttribute="top" secondItem="O0D-uc-31M" secondAttribute="bottom" constant="120" id="y0a-0f-qC7"/>
+                                    <constraint firstItem="2Nw-o0-tg8" firstAttribute="top" secondItem="O0D-uc-31M" secondAttribute="bottom" constant="100" id="y0a-0f-qC7">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                    </constraint>
                                 </constraints>
                             </view>
                         </subviews>

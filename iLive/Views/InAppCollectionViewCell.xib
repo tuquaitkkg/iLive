@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock All Features Live Wallpapers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxH-09-kcA">
-                                <rect key="frame" x="8" y="269" width="304" height="48"/>
+                                <rect key="frame" x="8" y="299" width="304" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxj-Kw-7A1">
-                                <rect key="frame" x="-90.5" y="347" width="500" height="60"/>
+                                <rect key="frame" x="9.5" y="347" width="300" height="60"/>
                                 <color key="backgroundColor" red="0.1058823529" green="0.53725490200000003" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="J35-2E-lda">
@@ -87,7 +87,9 @@
                             <constraint firstItem="GxH-09-kcA" firstAttribute="leading" secondItem="V9B-rj-UCF" secondAttribute="leading" constant="8" id="Nlg-c0-8jb"/>
                             <constraint firstItem="GhX-7S-QQh" firstAttribute="leading" secondItem="V9B-rj-UCF" secondAttribute="leading" id="em2-hp-mh0"/>
                             <constraint firstAttribute="bottom" secondItem="GhX-7S-QQh" secondAttribute="bottom" id="jSj-BK-cIM"/>
-                            <constraint firstItem="GhX-7S-QQh" firstAttribute="top" secondItem="Mxj-Kw-7A1" secondAttribute="bottom" constant="100" id="jqd-12-dqw"/>
+                            <constraint firstItem="GhX-7S-QQh" firstAttribute="top" secondItem="Mxj-Kw-7A1" secondAttribute="bottom" constant="100" id="jqd-12-dqw">
+                                <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="GhX-7S-QQh" secondAttribute="trailing" id="qgD-T7-WNc"/>
                             <constraint firstItem="Mxj-Kw-7A1" firstAttribute="centerX" secondItem="V9B-rj-UCF" secondAttribute="centerX" id="rMq-pF-xFG"/>
                             <constraint firstItem="Mxj-Kw-7A1" firstAttribute="top" secondItem="GxH-09-kcA" secondAttribute="bottom" constant="30" id="rna-K6-I1m"/>

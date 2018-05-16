@@ -32,6 +32,11 @@ class StartViewController: UIViewController, UICollectionViewDataSource, UIColle
         clStart.register(UINib.init(nibName: "StartCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cellStart")
         clStart.register(UINib.init(nibName: "InAppCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cellInApp")
         pageControl.numberOfPages = 3
+        if #available(iOS 11.0, *) {
+            clStart.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         
     }
 

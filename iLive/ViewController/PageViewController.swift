@@ -21,7 +21,7 @@ enum ScreenType {
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, GADInterstitialDelegate {
     
     
-    var checkInApp = 0
+    var checkInApp = 1
     var indexSelected = 0
     var countClick = 0
     var videosArray : NSMutableArray = []
@@ -59,6 +59,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         imagePreview = UIImageView(frame: view.bounds)
         view.addSubview(imagePreview)
+        
+        if countClick % 3 == 0 {
+            self.showInapp()
+        }
     }
     
     // must be internal or public.
@@ -90,6 +94,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIApplication.shared.isStatusBarHidden = false
+        timer.invalidate()
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,13 +107,13 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             favoriteFile = NSMutableArray.init(array: UserDefaults.standard.array(forKey: "favoriteFile")!)
         }
         
-        lblDate = UILabel(frame: CGRect(x: (UIScreen.main.bounds.size.width - 200)/2, y: 130, width: 200, height: 50))
+        lblDate = UILabel(frame: CGRect(x: (UIScreen.main.bounds.size.width - 250)/2, y: 130, width: 250, height: 50))
         lblDate.textAlignment = .center
         lblDate.textColor = .white
         lblDate.font = UIFont.systemFont(ofSize: 20)
         lblDate.tag = 1
         
-        lblTime = UILabel(frame: CGRect(x: (UIScreen.main.bounds.size.width - 200)/2, y: 50, width: 200, height: 70))
+        lblTime = UILabel(frame: CGRect(x: (UIScreen.main.bounds.size.width - 250)/2, y: 50, width: 250, height: 70))
         lblTime.textAlignment = .center
         lblTime.textColor = .white
         lblTime.font = UIFont.systemFont(ofSize: 80.0, weight: .thin)
@@ -380,9 +385,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
             checkInApp += 1
             if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
                 if checkInApp % 3 == 0 && checkInApp > 0 {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let tabbarController = storyboard.instantiateViewController(withIdentifier: "InAppViewController")
-                    self.present(tabbarController, animated: true, completion: nil)
+                    self.showInapp();
                 }
             }
             
@@ -450,11 +453,17 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         print("Ad Received")
         if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
             if ad.isReady {
-                if countClick % 3 == 0 {
+                if countClick % 2 == 0 {
                     interstitialAd.present(fromRootViewController: self)
                 }
             }
         }
+    }
+    
+    func showInapp() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabbarController = storyboard.instantiateViewController(withIdentifier: "InAppViewController")
+        self.present(tabbarController, animated: true, completion: nil)
     }
 }
 
