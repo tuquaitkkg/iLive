@@ -22,7 +22,7 @@ class LoadingViewController: BaseViewController {
                 DataStore.sharedInstance.categoryList = photos
 //                self?.downloadFeatured(completionHandle: {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+                if !(UserDefaults.standard.bool(forKey: Constants.firstTime)) {
                     appDelegate.setupRootView()
                 } else {
                     appDelegate.setupMainView()

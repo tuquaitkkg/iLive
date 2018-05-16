@@ -62,6 +62,7 @@ class InAppCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func clickExit(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: Constants.firstTime)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setupMainView()
     }

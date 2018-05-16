@@ -261,6 +261,7 @@ extension StartViewController {
         switch result {
         case .success(let purchase):
             print("Purchase Success: \(purchase.productId)")
+            UserDefaults.standard.set(true, forKey: Constants.firstTime)
             UserDefaults.standard.set(true, forKey: Constants.InAppPurchaseComplete)
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.setupMainView()
@@ -297,6 +298,7 @@ extension StartViewController {
         } else if results.restoredPurchases.count > 0 {
             print("Restore Success: \(results.restoredPurchases)")
             UserDefaults.standard.set(false, forKey: Constants.InAppPurchaseComplete)
+            UserDefaults.standard.set(true, forKey: Constants.firstTime)
             return alertWithTitle("Purchases Restored", message: "All purchases have been restored")
         } else {
             print("Nothing to Restore")

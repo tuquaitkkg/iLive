@@ -24,6 +24,7 @@ struct Constants {
     }
     static let productIDAutoRenew = "com.tienhoang.cleanbackup.wallpaper"
     static let InAppPurchaseComplete = "InAppPurchaseComplete"
+    static let firstTime = "firstTime"
     static let PhoneColumns: CGFloat = 3.0
     static let PadColumns: CGFloat = 5.0
     
