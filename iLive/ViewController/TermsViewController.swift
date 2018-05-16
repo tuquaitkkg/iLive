@@ -10,10 +10,16 @@ import UIKit
 
 class TermsViewController: BaseViewController {
     @IBOutlet weak var lblDetail: UILabel!
+    var filename : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Privacy Policy"
+        if filename == "policy" {
+            self.title = "Privacy Policy"
+        } else {
+            self.title = "Terms Of Use"
+        }
+        
         showPrivacy()
         // Do any additional setup after loading the view.
     }
@@ -24,7 +30,7 @@ class TermsViewController: BaseViewController {
     }
     
     func showPrivacy() -> Void {
-        if let filepath = Bundle.main.path(forResource: "policy", ofType: "txt") {
+        if let filepath = Bundle.main.path(forResource: filename, ofType: "txt") {
             do {
                 let contents = try String(contentsOfFile: filepath)
                 lblDetail.text = contents

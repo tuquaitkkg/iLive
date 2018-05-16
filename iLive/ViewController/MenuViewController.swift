@@ -62,7 +62,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,13 +75,13 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             cell.textLabel?.text = "Favorite"
         case 2:
             cell.textLabel?.text = "Privacy Policy"
-//        case 3:
-//            cell.textLabel?.text = "Terms of Use"
+        case 3:
+            cell.textLabel?.text = "Terms of Use"
 //        case 4:
 //            cell.textLabel?.text = "Restore Puchase"
-        case 3:
-            cell.textLabel?.text = "Support"
         case 4:
+            cell.textLabel?.text = "Support"
+        case 5:
             cell.textLabel?.text = "Share this app"
         default:
             cell.textLabel?.text = ""
@@ -108,14 +108,20 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             frostedViewController.hideMenuViewController()
         case 2:
             let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            termVC.filename = "policy"
             navigationController.viewControllers = [termVC]
             frostedViewController.contentViewController = navigationController
             frostedViewController.hideMenuViewController()
-//        case 3:
-//            break
+        case 3:
+            let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            termVC.filename = "TermsofUse"
+            navigationController.viewControllers = [termVC]
+            frostedViewController.contentViewController = navigationController
+            frostedViewController.hideMenuViewController()
+            break
 //        case 4:
 //            break
-        case 3:
+        case 4:
             let mailComposeViewController = configuredMailComposeViewController()
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: {
@@ -125,7 +131,7 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
             } else {
                 self.showSendMailErrorAlert()
             }
-        case 4:
+        case 5:
             let url : URL = URL.init(string: "https://itunes.apple.com/us/app/live-wallpaper-for-iphone-hd/id1375255874?ls=1&mt=8")!
             let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             let cell = tableView.cellForRow(at: indexPath)

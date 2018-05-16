@@ -27,6 +27,7 @@
 		3D34E27F20A93EA70042B75F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2963C120786E1A003FB61E /* StoreKit.framework */; };
 		3D676351207121160041D8CD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D676350207121160041D8CD /* Constants.swift */; };
 		3D676353207126030041D8CD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D676352207126030041D8CD /* Utils.swift */; };
+		3D78620420ABCA4F00B0F6C8 /* TermsofUse.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3D78620320ABCA4F00B0F6C8 /* TermsofUse.txt */; };
 		3D7971C62069536600876825 /* LiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7971C52069536600876825 /* LiveNavigationController.swift */; };
 		3D7971C8206954B600876825 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7971C7206954B600876825 /* MenuViewController.swift */; };
 		3D907D7720AB3345008654B7 /* SKProduct+LocalizedPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D907D6220AB3344008654B7 /* SKProduct+LocalizedPrice.swift */; };
@@ -174,7 +175,6 @@
 		3DCFF906208CCD860034BFC0 /* offline_imagexxx54.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF899208CCD860034BFC0 /* offline_imagexxx54.jpg */; };
 		3DCFF907208CCD860034BFC0 /* offline_imagexxx40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF89A208CCD860034BFC0 /* offline_imagexxx40.jpg */; };
 		3DE1B19120A8491B007F0212 /* wallpaper_inapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */; };
-		3DE1B19320A8668D007F0212 /* IAPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1B19220A8668C007F0212 /* IAPHandler.swift */; };
 		3DE1B19520A89533007F0212 /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1B19420A89533007F0212 /* InAppViewController.swift */; };
 		B086CF3AB110B57F12D487A5 /* Pods_iLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C333460C55EE4986C4A6037 /* Pods_iLive.framework */; };
 /* End PBXBuildFile section */
@@ -204,6 +204,7 @@
 		3D2963C320786F68003FB61E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		3D676350207121160041D8CD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3D676352207126030041D8CD /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		3D78620320ABCA4F00B0F6C8 /* TermsofUse.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TermsofUse.txt; sourceTree = "<group>"; };
 		3D7971C52069536600876825 /* LiveNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveNavigationController.swift; sourceTree = "<group>"; };
 		3D7971C7206954B600876825 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		3D907D6220AB3344008654B7 /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
@@ -351,7 +352,6 @@
 		3DCFF899208CCD860034BFC0 /* offline_imagexxx54.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = offline_imagexxx54.jpg; sourceTree = "<group>"; };
 		3DCFF89A208CCD860034BFC0 /* offline_imagexxx40.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = offline_imagexxx40.jpg; sourceTree = "<group>"; };
 		3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper_inapp.png; sourceTree = "<group>"; };
-		3DE1B19220A8668C007F0212 /* IAPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHandler.swift; sourceTree = "<group>"; };
 		3DE1B19420A89533007F0212 /* InAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		5C333460C55EE4986C4A6037 /* Pods_iLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7358F63D9A26EE636EEC9617 /* Pods-iLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.debug.xcconfig"; sourceTree = "<group>"; };
@@ -375,6 +375,8 @@
 		3D1E29982069415300DF7433 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				3D907D9220AB3F97008654B7 /* NetworkActivityIndicatorManager.swift */,
+				3D907D6120AB3344008654B7 /* SwiftyStoreKit */,
 				3D1E29992069416200DF7433 /* MBProgressHUD */,
 			);
 			path = ThirdParty;
@@ -396,6 +398,10 @@
 				3D2198C32074D6E400F6C632 /* FeaturedCell.xib */,
 				3D2198C42074D6E400F6C632 /* WallpaperCell.swift */,
 				3D2198C52074D6E400F6C632 /* WallpaperCell.xib */,
+				3DBEE1CA20A7EE140016EF41 /* StartCollectionViewCell.swift */,
+				3DBEE1CB20A7EE140016EF41 /* StartCollectionViewCell.xib */,
+				3DBEE1DF20A845A30016EF41 /* InAppCollectionViewCell.swift */,
+				3DBEE1E020A845A30016EF41 /* InAppCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 				3DAF44C12078B6740033895F /* PageViewController.swift */,
 				3D23391D207A3F4D005CD10D /* TermsViewController.swift */,
 				3DBEE1C820A7DF8E0016EF41 /* StartViewController.swift */,
+				3DE1B19420A89533007F0212 /* InAppViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -451,10 +458,6 @@
 		3D286E7420693CC800298FA7 /* iLive */ = {
 			isa = PBXGroup;
 			children = (
-				3D907D9220AB3F97008654B7 /* NetworkActivityIndicatorManager.swift */,
-				3D907D6120AB3344008654B7 /* SwiftyStoreKit */,
-				3DE1B19220A8668C007F0212 /* IAPHandler.swift */,
-				3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */,
 				3DBEE1CE20A82B420016EF41 /* StartFolder */,
 				3DCFF82B208CCD860034BFC0 /* Image_Offline */,
 				3D2339182079F33F005CD10D /* Services */,
@@ -467,13 +470,10 @@
 				3D286E7C20693CC800298FA7 /* Assets.xcassets */,
 				3D286E7E20693CC800298FA7 /* LaunchScreen.storyboard */,
 				3D286E8120693CC800298FA7 /* Info.plist */,
+				3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */,
 				3D1E299D206941CE00DF7433 /* iLive-Bridging-Header.h */,
+				3D78620320ABCA4F00B0F6C8 /* TermsofUse.txt */,
 				3D23391B207A3E89005CD10D /* policy.txt */,
-				3DBEE1CA20A7EE140016EF41 /* StartCollectionViewCell.swift */,
-				3DBEE1CB20A7EE140016EF41 /* StartCollectionViewCell.xib */,
-				3DBEE1DF20A845A30016EF41 /* InAppCollectionViewCell.swift */,
-				3DBEE1E020A845A30016EF41 /* InAppCollectionViewCell.xib */,
-				3DE1B19420A89533007F0212 /* InAppViewController.swift */,
 			);
 			path = iLive;
 			sourceTree = "<group>";
@@ -816,6 +816,7 @@
 				3DCFF8A0208CCD860034BFC0 /* offline_videoxxx21.mov in Resources */,
 				3D286E7D20693CC800298FA7 /* Assets.xcassets in Resources */,
 				3DCFF8F1208CCD860034BFC0 /* offline_imagexxx35.jpg in Resources */,
+				3D78620420ABCA4F00B0F6C8 /* TermsofUse.txt in Resources */,
 				3DCFF8BB208CCD860034BFC0 /* offline_videoxxx46.mov in Resources */,
 				3DCFF904208CCD860034BFC0 /* offline_imagexxx41.jpg in Resources */,
 				3DCFF8CB208CCD860034BFC0 /* offline_videoxxx29.mov in Resources */,
@@ -948,7 +949,6 @@
 				3DE1B19520A89533007F0212 /* InAppViewController.swift in Sources */,
 				3D7971C8206954B600876825 /* MenuViewController.swift in Sources */,
 				3D907D8720AB3345008654B7 /* AppleReceiptValidator.swift in Sources */,
-				3DE1B19320A8668D007F0212 /* IAPHandler.swift in Sources */,
 				3D2198C62074D6E500F6C632 /* FeaturedCell.swift in Sources */,
 				3DBEE1E120A845A30016EF41 /* InAppCollectionViewCell.swift in Sources */,
 				3D907D9320AB3F97008654B7 /* NetworkActivityIndicatorManager.swift in Sources */,
