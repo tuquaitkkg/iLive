@@ -69,7 +69,13 @@ class InAppViewController: UIViewController {
     }
     
     @IBAction func clickExit(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.frame.origin.y = self.view.frame.size.height + 1
+            }, completion: {_ in
+                self.view.removeFromSuperview()
+                self.removeFromParentViewController()
+            })
+        
     }
     
     func purchase(_ purchase: RegisteredPurchase, atomically: Bool) {

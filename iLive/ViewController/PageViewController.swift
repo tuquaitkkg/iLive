@@ -56,13 +56,14 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         
         initButtons()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
-        imagePreview = UIImageView(frame: view.bounds)
-        view.addSubview(imagePreview)
         
-        if countClick % 3 == 0 {
-            self.showInapp()
+        
+        if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
+            if countClick % 3 == 0 {
+                self.showInapp()
+            }
         }
+        
     }
     
     // must be internal or public.
@@ -80,6 +81,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isStatusBarHidden = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         if !(UserDefaults.standard.bool(forKey: Constants.InAppPurchaseComplete)) {
             createGADBannerView()
         } else {
@@ -461,9 +463,15 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func showInapp() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabbarController = storyboard.instantiateViewController(withIdentifier: "InAppViewController")
-        self.present(tabbarController, animated: true, completion: nil)
+        if let wvc = storyboard?.instantiateViewController(withIdentifier: "InAppViewController") as? InAppViewController {
+            
+            self.addChildViewController(wvc)
+            
+            self.view.addSubview(wvc.view)
+            
+            wvc.didMove(toParentViewController: self)
+            
+        }
     }
 }
 
