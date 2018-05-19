@@ -109,12 +109,14 @@ class MenuViewController: UITableViewController,MFMailComposeViewControllerDeleg
         case 2:
             let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
             termVC.filename = "policy"
+            termVC.typeView = 1;
             navigationController.viewControllers = [termVC]
             frostedViewController.contentViewController = navigationController
             frostedViewController.hideMenuViewController()
         case 3:
             let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
             termVC.filename = "TermsofUse"
+            termVC.typeView = 1;
             navigationController.viewControllers = [termVC]
             frostedViewController.contentViewController = navigationController
             frostedViewController.hideMenuViewController()

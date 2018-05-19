@@ -176,6 +176,8 @@
 		3DCFF907208CCD860034BFC0 /* offline_imagexxx40.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3DCFF89A208CCD860034BFC0 /* offline_imagexxx40.jpg */; };
 		3DE1B19120A8491B007F0212 /* wallpaper_inapp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */; };
 		3DE1B19520A89533007F0212 /* InAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE1B19420A89533007F0212 /* InAppViewController.swift */; };
+		9023391320B03F660049CC5C /* background_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9023391220B03F660049CC5C /* background_button.png */; };
+		9023394720B041FE0049CC5C /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9023394620B041FE0049CC5C /* TTTAttributedLabel.m */; };
 		B086CF3AB110B57F12D487A5 /* Pods_iLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C333460C55EE4986C4A6037 /* Pods_iLive.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,7 +194,7 @@
 		3D2198C52074D6E400F6C632 /* WallpaperCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallpaperCell.xib; sourceTree = "<group>"; };
 		3D23391B207A3E89005CD10D /* policy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = policy.txt; sourceTree = "<group>"; };
 		3D23391D207A3F4D005CD10D /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
-		3D286E7220693CC800298FA7 /* iLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D286E7220693CC800298FA7 /* Fancy - Live Wallpaper.s.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fancy - Live Wallpaper.s.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D286E7520693CC800298FA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D286E7720693CC800298FA7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		3D286E7A20693CC800298FA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -355,6 +357,9 @@
 		3DE1B19420A89533007F0212 /* InAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppViewController.swift; sourceTree = "<group>"; };
 		5C333460C55EE4986C4A6037 /* Pods_iLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7358F63D9A26EE636EEC9617 /* Pods-iLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.debug.xcconfig"; sourceTree = "<group>"; };
+		9023391220B03F660049CC5C /* background_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_button.png; sourceTree = "<group>"; };
+		9023394520B041FE0049CC5C /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		9023394620B041FE0049CC5C /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		E9775801BCF4E5CEB593066E /* Pods-iLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-iLive/Pods-iLive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,6 +380,7 @@
 		3D1E29982069415300DF7433 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				9023394420B041FE0049CC5C /* TTTAttributedLabel */,
 				3D907D9220AB3F97008654B7 /* NetworkActivityIndicatorManager.swift */,
 				3D907D6120AB3344008654B7 /* SwiftyStoreKit */,
 				3D1E29992069416200DF7433 /* MBProgressHUD */,
@@ -450,7 +456,7 @@
 		3D286E7320693CC800298FA7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D286E7220693CC800298FA7 /* iLive.app */,
+				3D286E7220693CC800298FA7 /* Fancy - Live Wallpaper.s.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				3D286E7C20693CC800298FA7 /* Assets.xcassets */,
 				3D286E7E20693CC800298FA7 /* LaunchScreen.storyboard */,
 				3D286E8120693CC800298FA7 /* Info.plist */,
+				9023391220B03F660049CC5C /* background_button.png */,
 				3DE1B19020A8491A007F0212 /* wallpaper_inapp.png */,
 				3D1E299D206941CE00DF7433 /* iLive-Bridging-Header.h */,
 				3D78620320ABCA4F00B0F6C8 /* TermsofUse.txt */,
@@ -664,6 +671,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9023394420B041FE0049CC5C /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				9023394520B041FE0049CC5C /* TTTAttributedLabel.h */,
+				9023394620B041FE0049CC5C /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		B4AEDEDA6AA4E152C5E6E208 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,7 +710,7 @@
 			);
 			name = iLive;
 			productName = iLive;
-			productReference = 3D286E7220693CC800298FA7 /* iLive.app */;
+			productReference = 3D286E7220693CC800298FA7 /* Fancy - Live Wallpaper.s.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -709,7 +725,7 @@
 				TargetAttributes = {
 					3D286E7120693CC800298FA7 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -760,6 +776,7 @@
 				3DCFF8C2208CCD860034BFC0 /* offline_videoxxx48.mov in Resources */,
 				3DCFF8FE208CCD860034BFC0 /* offline_imagexxx53.jpg in Resources */,
 				3DCFF8E0208CCD860034BFC0 /* offline_imagexxx3.jpg in Resources */,
+				9023391320B03F660049CC5C /* background_button.png in Resources */,
 				3DCFF8E5208CCD860034BFC0 /* offline_imagexxx1.jpg in Resources */,
 				3DCFF8C1208CCD860034BFC0 /* offline_videoxxx45.mov in Resources */,
 				3DCFF8B9208CCD860034BFC0 /* offline_videoxxx2.mov in Resources */,
@@ -982,6 +999,7 @@
 				3D2198BC207478F100F6C632 /* ListViewController.swift in Sources */,
 				3D907D7D20AB3345008654B7 /* SwiftyStoreKit+Types.swift in Sources */,
 				3D676351207121160041D8CD /* Constants.swift in Sources */,
+				9023394720B041FE0049CC5C /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1119,17 +1137,17 @@
 			baseConfigurationReference = 7358F63D9A26EE636EEC9617 /* Pods-iLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tuan Nguyen (WP9WTWYQXK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tuan Nguyen (WP9WTWYQXK)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WP9WTWYQXK;
 				INFOPLIST_FILE = iLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tienhoang.cleanbackup;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_NAME = "Fancy - Live Wallpaper.s";
+				PROVISIONING_PROFILE = "d12fddbe-e045-48f9-b87d-33dfac494b0e";
+				PROVISIONING_PROFILE_SPECIFIER = LiveWallpaper.AppStore;
 				SWIFT_OBJC_BRIDGING_HEADER = "iLive/iLive-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1141,17 +1159,17 @@
 			baseConfigurationReference = E9775801BCF4E5CEB593066E /* Pods-iLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tuan Nguyen (WP9WTWYQXK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tuan Nguyen (WP9WTWYQXK)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = WP9WTWYQXK;
 				INFOPLIST_FILE = iLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tienhoang.cleanbackup;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_NAME = "Fancy - Live Wallpaper.s";
+				PROVISIONING_PROFILE = "d12fddbe-e045-48f9-b87d-33dfac494b0e";
+				PROVISIONING_PROFILE_SPECIFIER = LiveWallpaper.AppStore;
 				SWIFT_OBJC_BRIDGING_HEADER = "iLive/iLive-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

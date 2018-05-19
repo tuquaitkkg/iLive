@@ -66,6 +66,22 @@ class StartViewController: UIViewController, UICollectionViewDataSource, UIColle
                 self.restorePurchases()
 //                UIApplication.shared.openURL(URL.init(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")!)
             }
+            cell.goToPrivacy {
+                let termVC = self.storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+                termVC.filename = "policy"
+                termVC.typeView = 2;
+                let navController = UINavigationController(rootViewController: termVC)
+                
+                self.present(navController, animated: true, completion: nil)
+            }
+            cell.goToTerm {
+                let termVC = self.storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+                termVC.filename = "TermsofUse"
+                termVC.typeView = 2;
+                let navController = UINavigationController(rootViewController: termVC)
+                
+                self.present(navController, animated: true, completion: nil)
+            }
             return cell
         }
         

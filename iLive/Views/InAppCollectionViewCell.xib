@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellInApp" id="gTV-IL-0wX" customClass="InAppCollectionViewCell" customModule="iLive" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellInApp" id="gTV-IL-0wX" customClass="InAppCollectionViewCell" customModule="Fancy___Live_Wallpaper_s" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="557"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock All Features Live Wallpapers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxH-09-kcA">
-                                <rect key="frame" x="8" y="299" width="304" height="18"/>
+                                <rect key="frame" x="8" y="344" width="304" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -48,16 +48,16 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxj-Kw-7A1">
-                                <rect key="frame" x="9.5" y="347" width="300" height="60"/>
-                                <color key="backgroundColor" red="0.1058823529" green="0.53725490200000003" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxj-Kw-7A1">
+                                <rect key="frame" x="9.5" y="392" width="300" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="J35-2E-lda">
                                         <variation key="heightClass=regular-widthClass=regular" constant="500"/>
                                     </constraint>
                                     <constraint firstAttribute="height" constant="60" id="eVu-ll-dWB"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Button" backgroundImage="background_button.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -78,6 +78,12 @@
                                     <action selector="clickExit:" destination="gTV-IL-0wX" eventType="touchUpInside" id="D7H-xI-0tI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-r0-wpK" customClass="TTTAttributedLabel">
+                                <rect key="frame" x="9.5" y="472" width="300" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -85,11 +91,12 @@
                             <constraint firstItem="GxH-09-kcA" firstAttribute="centerX" secondItem="V9B-rj-UCF" secondAttribute="centerX" id="EQd-ju-DTy"/>
                             <constraint firstItem="HpB-MH-U19" firstAttribute="top" secondItem="V9B-rj-UCF" secondAttribute="top" constant="15" id="Im9-rt-16V"/>
                             <constraint firstItem="GxH-09-kcA" firstAttribute="leading" secondItem="V9B-rj-UCF" secondAttribute="leading" constant="8" id="Nlg-c0-8jb"/>
+                            <constraint firstItem="BTN-r0-wpK" firstAttribute="trailing" secondItem="Mxj-Kw-7A1" secondAttribute="trailing" id="USb-9g-B8Y"/>
+                            <constraint firstItem="BTN-r0-wpK" firstAttribute="leading" secondItem="Mxj-Kw-7A1" secondAttribute="leading" id="XUo-tJ-zSa"/>
+                            <constraint firstItem="BTN-r0-wpK" firstAttribute="top" secondItem="Mxj-Kw-7A1" secondAttribute="bottom" constant="20" id="cSM-Hj-VzX"/>
                             <constraint firstItem="GhX-7S-QQh" firstAttribute="leading" secondItem="V9B-rj-UCF" secondAttribute="leading" id="em2-hp-mh0"/>
                             <constraint firstAttribute="bottom" secondItem="GhX-7S-QQh" secondAttribute="bottom" id="jSj-BK-cIM"/>
-                            <constraint firstItem="GhX-7S-QQh" firstAttribute="top" secondItem="Mxj-Kw-7A1" secondAttribute="bottom" constant="100" id="jqd-12-dqw">
-                                <variation key="heightClass=regular-widthClass=regular" constant="200"/>
-                            </constraint>
+                            <constraint firstItem="GhX-7S-QQh" firstAttribute="top" secondItem="BTN-r0-wpK" secondAttribute="bottom" constant="20" id="nSL-RL-0Yo"/>
                             <constraint firstAttribute="trailing" secondItem="GhX-7S-QQh" secondAttribute="trailing" id="qgD-T7-WNc"/>
                             <constraint firstItem="Mxj-Kw-7A1" firstAttribute="centerX" secondItem="V9B-rj-UCF" secondAttribute="centerX" id="rMq-pF-xFG"/>
                             <constraint firstItem="Mxj-Kw-7A1" firstAttribute="top" secondItem="GxH-09-kcA" secondAttribute="bottom" constant="30" id="rna-K6-I1m"/>
@@ -113,11 +120,13 @@
                 <outlet property="btnBuy" destination="Mxj-Kw-7A1" id="KIc-cf-rW9"/>
                 <outlet property="btnExit" destination="HpB-MH-U19" id="tks-V0-8PA"/>
                 <outlet property="btnRestore" destination="GhX-7S-QQh" id="7Cd-bx-1Ef"/>
+                <outlet property="lblDetail" destination="BTN-r0-wpK" id="NgA-DN-ohW"/>
             </connections>
             <point key="canvasLocation" x="149.5" y="305.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="wallpaper_inapp.png" width="720" height="1200"/>
+        <image name="background_button.png" width="600" height="123"/>
+        <image name="wallpaper_inapp.png" width="720" height="1201"/>
     </resources>
 </document>

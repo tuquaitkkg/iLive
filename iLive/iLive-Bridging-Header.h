@@ -10,3 +10,4 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <REFrostedViewController/REFrostedViewController.h>
 #import <FCFileManager/FCFileManager.h>
+#import "TTTAttributedLabel.h"

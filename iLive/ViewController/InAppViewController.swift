@@ -8,8 +8,9 @@
 
 import UIKit
 
-class InAppViewController: UIViewController {
+class InAppViewController: UIViewController, TTTAttributedLabelDelegate {
 
+    @IBOutlet weak var lblDetail: TTTAttributedLabel!
     @IBOutlet weak var btnExit: UIButton!
     @IBOutlet weak var btnBuy: UIButton!
     @IBOutlet weak var btnRestore: UIButton!
@@ -21,7 +22,8 @@ class InAppViewController: UIViewController {
         btnBuy.titleLabel?.textAlignment = .center
         guard
             let font1 = UIFont(name: "HelveticaNeue-Bold", size: 20),
-            let font2 = UIFont(name: "HelveticaNeue", size: 16)  else { return }
+            let font2 = UIFont(name: "HelveticaNeue", size: 16),
+            let font3 = UIFont(name: "HelveticaNeue-Bold", size: 12) else { return }
         
         let style = NSMutableParagraphStyle()
         style.alignment = NSTextAlignment.center
@@ -51,7 +53,42 @@ class InAppViewController: UIViewController {
         btnExit.layer.borderWidth = 2.0
         btnExit.layer.borderColor = UIColor.white.cgColor
         btnExit.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
-
+        
+        
+        let titleAttributes1: [NSAttributedStringKey : Any] = [
+            NSAttributedStringKey.font : font3,
+            NSAttributedStringKey.paragraphStyle : style,
+            ]
+        let str = "Subscription automatically renews unless auto-renew is turned off at least 24h before the end of the current period. subscriptions may be managed by the user ans auto-renewal may be turned off by goipng to the user's Account setting after purchase. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription, where applicable.  Learn more Privacy and Terms of service."
+        lblDetail.isUserInteractionEnabled = true
+        lblDetail.delegate = self
+        lblDetail.text = str
+        let nsString = str as NSString
+        let range = nsString.range(of: "Learn more Privacy")
+        let prefixAttributes = NSTextCheckingResult.linkCheckingResult(range: range, url: URL.init(string: "action:Privacy")!)
+        let range2 = nsString.range(of: "Terms of service")
+        let prefixAttributes2 = NSTextCheckingResult.linkCheckingResult(range: range2, url: URL.init(string: "action:Terms")!)
+        lblDetail.addLink(with: prefixAttributes, attributes: titleAttributes1)
+        lblDetail.addLink(with: prefixAttributes2, attributes: titleAttributes1)
+        lblDetail.activeLinkAttributes = nil
+    }
+    
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+        if url.absoluteString == "action:Privacy" {
+            let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            termVC.filename = "policy"
+            termVC.typeView = 2;
+            let navController = UINavigationController(rootViewController: termVC)
+            
+            present(navController, animated: true, completion: nil)
+        } else {
+            let termVC = storyboard!.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            termVC.filename = "TermsofUse"
+            termVC.typeView = 2;
+            let navController = UINavigationController(rootViewController: termVC)
+            
+            present(navController, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
